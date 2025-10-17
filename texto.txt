@@ -1,0 +1,81 @@
+OpenAI. (2025). Algoritmia y el impacto en la programación con órdenes complejas y bases de datos
+
+Referencias en APA 7.0
+
+Brassard, G., & Bratley, P. (1996). Fundamentals of algorithmics. Prentice Hall.
+
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to algorithms (4th ed.). MIT Press.
+
+
+
+Atributos de los tipos de algoritmos
+
+Según Brassard y Bratley (1996), cada tipo de algoritmo posee atributos específicos que determinan su utilidad y aplicación:
+
+Algoritmos secuenciales
+
+Atributo principal: linealidad en la ejecución.
+
+Se caracterizan porque cada instrucción depende de la finalización de la anterior.
+
+Son simples, fáciles de comprender y adecuados para problemas sin decisiones complejas.
+
+Algoritmos condicionales
+
+Atributo principal: capacidad de decisión.
+
+Permiten seleccionar entre diferentes caminos de ejecución según condiciones lógicas.
+
+Brindan flexibilidad y adaptabilidad, pero requieren mayor control en la programación.
+
+Algoritmos iterativos
+
+Atributo principal: repetición controlada.
+
+Ejecutan un bloque de instrucciones varias veces hasta cumplir una condición de salida.
+
+Son eficientes en problemas repetitivos, aunque pueden generar bucles infinitos si no se definen bien las condiciones.
+
+Algoritmos recursivos
+
+Atributo principal: auto-referencia.
+
+El algoritmo se invoca a sí mismo para resolver subproblemas más pequeños.
+
+Facilitan la programación de estructuras como árboles, pero pueden ser menos eficientes en memoria si no están bien diseñados.
+
+Algoritmos deterministas
+
+Atributo principal: predictibilidad.
+
+Siempre generan la misma salida para una entrada determinada.
+
+Son confiables y seguros, aunque menos flexibles frente a problemas complejos o dinámicos.
+
+Algoritmos probabilísticos
+
+Atributo principal: aleatoriedad controlada.
+
+Incluyen elementos aleatorios para explorar posibles soluciones.
+
+Son útiles en inteligencia artificial, criptografía y simulaciones, pero no garantizan siempre la misma salida.
+
+Algoritmos paralelos y concurrentes
+
+Atributo principal: simultaneidad.
+
+Dividen el problema en varios subprocesos que se ejecutan al mismo tiempo.
+
+Aumentan la eficiencia y reducen tiempos de ejecución, aunque requieren coordinación y sincronización entre procesos.
+
+Síntesis
+
+En conclusión, los atributos de los algoritmos determinan cómo se comportan y qué tan adecuados son para resolver un problema específico. Mientras algunos se destacan por su simplicidad y predictibilidad, otros lo hacen por su capacidad de adaptación, repetición, exploración de soluciones o aprovechamiento de recursos en paralelo, lo que evidencia la riqueza y diversidad de enfoques en el diseño algorítmico (Brassard & Bratley, 1996).
+
+Referencia en APA 7.0
+
+Brassard, G., & Bratley, P. (1996). Fundamentals of algorithmics. Prentice Hall.
+
+¿Quieres que te organice estos atributos en una tabla comparativa (tipo de algoritmo vs. atributo principal vs. aplicación típica) para que sea más visual y útil en tu investigación?
+
+Algoritmos paralelos y concurrentes: dividen un problema en subprocesos que pueden ejecutarse simultáneamente en distintos procesadores o hilos, optimizando el tiempo de ejecución y aprovechando mejor los recursos computacionales. Son esenciales en la era actual del cómputo distribuido y de alto rendimiento.

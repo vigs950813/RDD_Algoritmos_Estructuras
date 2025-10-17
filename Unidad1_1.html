@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <title>Algoritmia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand,
+        .nav-link,
+        .boton-disp {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .navbar-personalizado {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            text-align: justify;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .disposicion {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .disposicion-logos {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .disposicion-logos div {
+            display: flex;
+            align-items: center;
+        }
+
+
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+            margin-right: 30px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 8px 15px !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .dropdown-item {
+            padding: 8px 20px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--secondary-color);
+            color: white !important;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .presentacion {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .presentacion:hover {
+            transform: translateY(-5px);
+        }
+
+        .boton-disp {
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .boton-disp:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton-disp i {
+            transition: transform 0.3s ease;
+        }
+
+        .boton-disp.collapsed i {
+            transform: rotate(-90deg);
+        }
+
+        #div_1,
+        #div_2,
+        #div_3,
+        #div_4,
+        #div_5 {
+            padding: 25px;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        footer h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        footer .nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+            padding: 5px 0 !important;
+        }
+
+        footer .nav-link:hover {
+            color: white !important;
+            padding-left: 10px !important;
+        }
+
+        .border-top {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .color-text {
+            color: white;
+        }
+
+        .renglones {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        .centrar-imagen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .centrar-imagen img {
+            max-width: 600px;
+            max-height: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .disposicion {
+                flex-direction: column;
+            }
+
+            .navbar-brand {
+                margin-bottom: 15px;
+            }
+
+            .presentacion {
+                padding: 20px;
+            }
+
+            .centrar-imagen img {
+                max-width: 400px;
+                max-height: 400px;
+            }
+
+        }
+
+
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        figcaption {
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #4285f4;
+            margin: 20px 0;
+        }
+
+        .paginacion {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .btn-paginacion {
+            padding: 10px 25px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-paginacion:hover {
+            background-color: #3498db;
+            text-decoration: none;
+        }
+
+        .btn-paginacion:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+
+
+    <div class="container">
+        <div class="presentacion" style="color: #f8f9fa;">
+            <h2>1.1 Algoritmia</h2>
+        </div>
+
+
+
+        <p>La algoritmia, según Cormen, Leiserson, Rivest y Stein (2022), se define como el estudio de los algoritmos,
+           entendidos como una secuencia finita y lógica de pasos destinados a resolver un problema o ejecutar una tarea.
+           Su importancia radica en organizar procesos de manera ordenada, optimizar recursos y constituir la base para
+           el diseño de programas y sistemas informáticos.</p>
+
+        <h4>Características de la algoritmia</h4>
+
+        <p>a) Secuencialidad: los pasos deben seguir un orden lógico y definido.</p>
+        <p>b) Finitud: todo algoritmo debe terminar después de un número limitado de pasos.</p>
+        <p>c) Precisión: cada instrucción debe estar claramente definida, sin ambigüedades.</p>
+        <p>d) Entrada y salida: requiere datos de entrada y produce resultados o salidas.</p>
+        <p>e) Eficiencia: busca optimizar recursos como tiempo y memoria.</p>
+        <p>f) Generalidad: un mismo algoritmo puede aplicarse a diferentes problemas con condiciones similares.</p>
+
+           Según Cormen, Leiserson, Rivest y Stein (2022), estas propiedades aseguran que los algoritmos sean correctos,
+           comprensibles y aplicables en la resolución de problemas computacionales..</p>
+
+        <h4>Importancia de la algoritmia en la estructura de datos</h4>
+
+        <p>La algoritmia, de acuerdo con Cormen, Leiserson, Rivest y Stein (2022), es fundamental en el estudio y aplicación
+           de las estructuras de datos, ya que posibilita el diseño de procedimientos eficientes para almacenar, organizar y
+           manipular la información. Su relevancia radica en que ofrece métodos para seleccionar el algoritmo más adecuado
+           en función de la complejidad temporal y espacial, asegurando soluciones óptimas en el procesamiento de datos.
+           En este sentido, la integración de algoritmos y estructuras de datos constituye la base para el desarrollo
+           de software eficiente, seguro y escalable.</p>
+
+        <h4>Características de la algoritmia con base en sus órdenes de complejidad</h4>
+        <ol>
+            <li><strong>Medición del rendimiento:</strong> la algoritmia permite evaluar el desempeño de los algoritmos
+                mediante funciones de complejidad que expresan el tiempo o recursos necesarios en relación
+                con el tamaño de la entrada.</li>
+            <li><strong>Clasificación de algoritmos:</strong> a través de la notación Big-O, se pueden agrupar algoritmos en 
+                categorías como constantes (O(1)), lineales (O(n)), logarítmicos (O(log n)) o cuadráticos (O(n²)), 
+                lo que facilita su comparación.</li>
+            <li><strong>Eficiencia y optimización:</strong> el análisis de complejidad orienta la selección del algoritmo
+                más adecuado para reducir el consumo de tiempo y memoria en la resolución de problemas.</li>
+            <li><strong>Escalabilidad:</strong> permite prever cómo crecerá el costo computacional a medida que aumente el
+                tamaño de los datos de entrada, asegurando que las soluciones sean viables en escenarios de gran escala.</li>
+            <li><strong>Base para la toma de decisiones:</strong> el estudio de la complejidad proporciona criterios objetivos
+                para elegir algoritmos, considerando no sólo la corrección, sino también la eficiencia en contextos reales.</li>
+                  
+        </ol>
+        <p> De acuerdo con Cormen, Leiserson, Rivest y Stein (2022), analizar los algoritmos bajo el enfoque de la 
+            complejidad temporal y espacial es esencial para garantizar soluciones computacionales eficientes, 
+            seguras y escalables.</p>
+        <div class="highlight">
+            <h4>Resumen algoritmia </h4>
+            <ul>
+                <li>Medición del rendimiento: evalúa el tiempo y recursos que consume un algoritmo.</li>
+                <li>Clasificación de algoritmos: utiliza notación Big-O (O(1), O(n), O(log n), O(n²)) para agruparlos según su eficiencia</li>
+                <li>Eficiencia y optimización: ayuda a elegir el algoritmo que mejor aproveche tiempo y memoria.</li>
+                <li>Escalabilidad: permite prever cómo crece el costo computacional al aumentar los datos de entrada.</li>
+                <li>Base para la toma de decisiones: ofrece criterios objetivos para seleccionar algoritmos en la resolución de problemas reales.</li>
+                
+            </ul>
+            <p>De acuerdo con Cormen, Leiserson, Rivest y Stein (2022), estas características hacen de la algoritmia un elemento
+               esencial para el desarrollo de software eficiente, seguro y escalable..
+            </p>
+        </div>
+        <p>La siguiente figura muestra cómo los algoritmos a través de órdenes complejas interactúan con las bases de datos para generar
+           resultados eficientes. Resalta la importancia de la complejidad algorítmica en la optimización del procesamiento y la
+           gestión de la información en sistemas computacionales.</p>
+        <br>
+        <figure>
+            <span>Fig. 1. Algoritmia y el impacto en la programación con órdenes complejas y bases de datos. La imagen representa la
+                  interacción entre algoritmos y bases de datos, destacando cómo la complejidad algorítmica influye en la eficiencia
+                  del procesamiento y la obtención de resultados en sistemas computacionales.</span>
+        </figure>
+        <div class="centrar-imagen">
+            <img src="images/figura1.png" alt="figura_1" style="max-width: 600px; max-height: 600px;">
+        </div>
+        <br>
+
+            
+        <h4>1.1.1 Características de los algoritmos y tipos</h4>
+
+        <p>Según Cormen, Leiserson, Rivest y Stein (2022), los algoritmos constituyen procedimientos sistemáticos que permiten
+           resolver problemas a través de una secuencia de pasos bien definidos. Una de sus características esenciales es la finitud,
+           ya que todo algoritmo debe concluir después de un número limitado de instrucciones; de lo contrario, se trataría de un proceso
+           infinito sin aplicación práctica. Además, la precisión es fundamental, pues cada paso debe estar claramente formulado y libre
+           de ambigüedades, garantizando que tanto personas como máquinas lo ejecuten de forma idéntica. Asimismo, un algoritmo requiere
+           siempre datos de entrada, que funcionan como base para su ejecución, y debe ofrecer al menos una salida, que constituye el
+           resultado final del procedimiento. Estas propiedades aseguran que el proceso sea verificable, trazable y confiable en
+           cualquier contexto computacional.
+
+        <p>Según Cormen, Leiserson, Rivest y Stein (2022), otro aspecto clave es la efectividad, entendida como la posibilidad
+           de que cada instrucción pueda llevarse a cabo en un tiempo finito y con recursos razonables, lo cual garantiza la viabilidad
+           de su aplicación. Además, los algoritmos deben mantener un orden lógico en la secuencia de pasos, de modo que la solución del
+           problema se alcance de manera coherente y eficiente. En conjunto, estas características permiten diseñar procedimientos que no
+           sólo resuelvan un problema, sino que lo hagan optimizando el uso de tiempo y memoria, lo cual es fundamental en la 
+           programación y en el manejo de grandes volúmenes de datos.</p>
+
+        <h4>Tipos de algoritmos </h4>
+
+        <p>Según Brassard y Bratley (1996), los algoritmos pueden clasificarse en distintos tipos según la forma en que estructuran y
+           procesan la información. Los secuenciales siguen un flujo lineal de pasos que se ejecutan uno tras otro, mientras que los
+           condicionales incorporan decisiones lógicas que permiten elegir diferentes rutas de ejecución. Los iterativos repiten bloques
+           de instrucciones hasta que se cumple una condición de salida, y los recursivos se llaman a sí mismos para resolver subproblemas
+           que forman parte del problema original.</p>
+
+        <p>Según Brassard y Bratley (1996), también se distinguen algoritmos deterministas, que producen siempre la misma salida para una
+           entrada específica, y algoritmos no deterministas o probabilísticos, que integran componentes aleatorios para explorar soluciones
+           en problemas de gran complejidad. Asimismo, en la actualidad adquieren gran relevancia los algoritmos paralelos y concurrentes, 
+           que dividen una tarea en múltiples subprocesos ejecutados de manera simultánea, lo que permite aprovechar mejor los recursos 
+           computacionales y reducir considerablemente los tiempos de procesamiento en sistemas de gran escala.</p>
+
+        
+
+        <h4>Según Brassard y Bratley (1996), los algoritmos pueden clasificarse en diferentes tipos como en su estructura y
+            modo de resolución:</h4>
+        
+        <p>a) Algoritmos secuenciales: siguen un flujo lineal de instrucciones, donde cada paso se ejecuta en un orden estricto
+           hasta llegar al resultado final. Son los más sencillos y se utilizan en problemas directos sin necesidad de decisiones complejas.
+
+        <p>b) Algoritmos condicionales: incorporan estructuras de decisión (si–entonces–de lo contrario), que permiten elegir entre
+           varias rutas de ejecución dependiendo de las condiciones establecidas. Son fundamentales en la programación moderna, ya que
+           introducen flexibilidad y adaptabilidad.
+
+        <p>c) Algoritmos iterativos: se basan en la repetición de bloques de instrucciones mediante ciclos o bucles, los cuales se repiten
+           hasta que se cumpla una condición de terminación. Son útiles en procesos repetitivos como cálculos matemáticos o recorridos de estructuras de datos.
+
+        <p>d) Algoritmos recursivos: se caracterizan por invocarse a sí mismos, resolviendo subproblemas más pequeños del problema original. Este tipo de
+           diseño permite simplificar problemas complejos como el cálculo de factoriales, recorridos de árboles o algoritmos de búsqueda y ordenamiento.
+
+        <p>e) Algoritmos deterministas: garantizan siempre el mismo resultado para una entrada dada, ya que sus pasos están perfectamente definidos y no
+           incluyen elementos aleatorios. Esto asegura predictibilidad y confiabilidad en su ejecución.
+
+        <p>f) Algoritmos probabilísticos o no deterministas: incluyen factores aleatorios en su ejecución, lo que los hace especialmente útiles en contextos
+           donde la búsqueda de soluciones requiere explorar múltiples posibilidades, como en simulaciones, criptografía o inteligencia artificial.
+
+         <p>g) Algoritmos paralelos y concurrentes: dividen un problema en subprocesos que pueden ejecutarse simultáneamente en distintos procesadores o hilos,
+           optimizando el tiempo de ejecución y aprovechando mejor los recursos computacionales. Son esenciales en la era actual del cómputo distribuido y 
+           de alto rendimiento.
+        </p>
+        <p>  En síntesis, la clasificación de los algoritmos no sólo refleja su estructura lógica, sino también las necesidades de eficiencia, precisión y 
+          escalabilidad en distintos contextos de aplicación. 
+        </p>
+
+        <h4></h4>
+
+        <p>La algoritmia aplicada a bases de datos permite diseñar procedimientos que optimicen la búsqueda, almacenamiento y
+        recuperación de información (Cormen et al., 2022). Un ejemplo es el algoritmo de búsqueda de un cliente por su identificador:
+        si la tabla está indexada, el Sistema de Gestión de Bases de Datos usa estructuras como árboles B o hashing, logrando búsquedas
+        en O(log n) u O(1); si no hay índices, recurre a una exploración secuencial en O(n) (Silberschatz et al., 2020). Tras localizar
+        el registro, se recupera la información y se cierra la conexión. La elección del algoritmo e infraestructura de datos es crítica
+        en grandes volúmenes, pues determina tiempos de respuesta y uso de recursos.</p>
+        <br>
+        <figure>
+
+            <span>Figura 2. Características y tipos de algoritmos, adaptado de Cormen, Leiserson, Rivest y Stein, 2022.</span>
+        </figure>
+        <div class="centrar-imagen">
+            <img src="images/figura22.png" alt="figura_2" style="max-width: 600px; max-height: 600px;">
+        </div>
+        <br>
+
+        <h4>1.1.2 Representación de algoritmos en pseudocódigo</h4>
+
+        <p>El pseudocódigo es una forma de representación intermedia entre el lenguaje natural y los lenguajes de programación formales.
+         Su propósito es expresar los pasos de un algoritmo de manera clara, estructurada y comprensible, sin depender de la sintaxis
+         estricta de un lenguaje de programación específico. Esto facilita la comprensión del procedimiento lógico tanto a programadores
+         como a personas con conocimientos básicos en informática.</p>
+
+         <p>A diferencia de un lenguaje de programación, el pseudocódigo no se ejecuta en una computadora; sin embargo, sirve como
+         guía para implementar el algoritmo posteriormente en cualquier lenguaje de programación. Su principal ventaja es la abstracción,
+         ya que permite centrarse en la lógica y la secuencia de instrucciones sin distraerse con detalles técnicos de la codificación (Sierra y Rojas, 2020).</p>
+
+        <h4>Formas de representar algoritmos</h4>
+
+        <p>La representación de un algoritmo tiene como objetivo describir una secuencia de instrucciones clara y comprensible para que cualquier persona
+        pueda interpretarlo y ejecutarlo. Existen diversas maneras de expresar un algoritmo y cada una ofrece una perspectiva distinta que facilita su
+        comprensión según el contexto y el propósito (García y Joyanes, 2017).</p>
+
+        <p></p>
+        <ul>
+            <li>1. Descripción textual: la representación de un algoritmo consiste en la descripción ordenada de pasos que permiten resolver un problema
+                de forma clara y precisa. Su finalidad es que cualquier persona, independientemente de su nivel de conocimiento técnico, pueda interpretar y
+                ejecutar las instrucciones sin ambigüedad. Para ello, se utilizan diversos lenguajes de representación, como diagramas de flujo, pseudocódigo o 
+                incluso lenguajes de programación, los cuales brindan distintas perspectivas que facilitan la comprensión del procedimiento según el propósito y
+                el contexto en el que se empleen y</li>
+            <li>2. Estructura interna: los diagramas de Nassi-Shneiderman, también conocidos como diagramas de estructuras, son una herramienta gráfica utilizada
+                para representar algoritmos de manera jerárquica y estructurada. Su característica principal es que muestran el flujo de control a través de bloques
+                rectangulares anidados, lo que facilita la comprensión de estructuras secuenciales, condicionales e iterativas. A diferencia de los diagramas de
+                flujo tradicionales, los diagramas de Nassi-Shneiderman evitan el uso de flechas y símbolos adicionales, centrándose en la claridad y en el diseño
+                estructurado de programas. Gracias a esta representación visual, se promueve una programación más ordenada, coherente y 
+                libre de ambigüedades.</li><p></p>
+
+           <p>La siguiente figura 3  Diagrama de Nassi-Shneiderman, muestra una representación estructurada de un algoritmo mediante bloques rectangulares anidados.
+              En la parte superior se observa el inicio y un proceso secuencial; posteriormente, se incluye una estructura condicional sí/no finalmente y un ciclo
+              mientras que evalúa una condición y repite un proceso. Este tipo de diagramas facilita la comprensión de algoritmos al evitar el uso de flechas, promoviendo
+              una visión clara y ordenada del flujo lógico.</p>
+        <figure>
+           <span>Figura 3, Diagrama de Nassi-Shneiderman. adaptado de Fundamentos de Programación: Algoritmos, estructuras de datos y objetos de Joyanes Aguilar (2008).</span>
+        </figure>
+        <div class="centrar-imagen">
+            <img src="images/figura3.png" alt="Figura_3" style="max-width: 600px; max-height: 600px;">
+        </div>
+        <br>
+            
+            </li>
+            <li>4. Diagramas de flujo: Los diagramas de flujo representan el flujo de un algoritmo utilizando figuras geométricas que corresponden
+                a distintos tipos de instrucciones, como inicio, proceso, decisión y fin. Esta representación facilita la visualización del camino
+                que sigue el algoritmo desde el inicio hasta su conclusión y es útil en el análisis de algoritmos con múltiples caminos
+                posibles.<p></p>
+
+                El diagrama de flujo constituye una herramienta gráfica que permite representar de manera secuencial el recorrido de un algoritmo
+                a través de símbolos estandarizados. En este caso, se observa el inicio mediante un óvalo, seguido de un proceso representado por
+                un rectángulo. Posteriormente, se incluye una condición en forma de rombo que plantea una decisión con dos alternativas (sí y no),
+                las cuales conducen a diferentes caminos dentro de la lógica del algoritmo. Finalmente, ambos caminos confluyen hacia un proceso 
+                que culmina con el óvalo de fin.<p></p>
+            </li>
+            <figure>
+               <span>Figura 4, Diagramas de flujo. Esta representación resulta particularmente útil en el análisis de algoritmos que contemplan múltiples
+               trayectorias, ya que posibilita una comprensión clara y estructurada del flujo lógico de ejecución.</span>
+            </figure>
+        <div class="centrar-imagen">
+            <img src="images/figura5.png" alt="Figura_5" style="max-width: 600px; max-height: 600px;">
+        </div>
+       <p></p>
+            <li>5. El pseudocódigo: es una forma de representación intermedia entre el lenguaje natural y un lenguaje de programación. Su principal
+                objetivo es describir de manera clara y estructurada los pasos de un algoritmo sin depender de la sintaxis estricta de un lenguaje específico.
+                De esta manera, facilita tanto el diseño de soluciones como la comunicación de ideas entre programadores y personas con menor experiencia
+                técnica.<p></p>
+
+                Una de sus ventajas radica en que combina expresiones en lenguaje común con estructuras propias de la programación, como condicionales,
+                bucles y secuencias. Esto permite representar algoritmos de forma precisa y entendible, sirviendo como etapa previa a la codificación en
+                un lenguaje formal.<p></p>
+            </li>
+            <span>Código 1, este pseudocódigo describe de manera sencilla la lógica necesaria para identificar si un número es par o impar.
+                Al emplear estructuras condicionales claras, se facilita la comprensión del procedimiento y su posterior traducción a un lenguaje de
+                programación. Elaboración propia con base en García y Joyanes (2017). </span>
+
+        <figure>
+            <span>Código 1. Ejemplo de pseudocódigo para determinar si un número es par o impar.</span>
+        </figure>
+
+        <div class="centrar-imagen">
+            <img src="images/Codigo_1.jpeg" alt="Codigo_1" style="max-width: 400px; max-height: 400px;">
+        </div>
+        <br />
+    </ul>
+     <div class="highlight">
+            <h4>Resumen. La representación de algoritmos es esencial para expresar de manera clara los pasos de una solución:</h4>
+            <ul>
+                <li>La representación de algoritmos es fundamental para describir de forma clara y ordenada los pasos de una
+                    solución, permitiendo su comprensión y ejecución sin ambigüedades (Cormen, Leiserson, Rivest y Stein, 2022). Entre los
+                    métodos más utilizados destacan los diagramas de flujo, que emplean símbolos geométricos para visualizar procesos y decisiones,
+                    útiles en algoritmos con múltiples trayectorias.</li>
+                <li>Asimismo, los diagramas de Nassi-Shneiderman presentan estructuras jerárquicas mediante bloques rectangulares anidados, promoviendo
+                    claridad y programación estructurada (Joyanes Aguilar, 2008). Por último, el pseudocódigo combina lenguaje natural con estructuras
+                   de programación, facilitando el diseño y la comunicación de algoritmos antes de su codificación. Clasificación
+                   de algoritmos: utiliza notación Big-O (O(1), O(n), O(log n), O(n²)) para agruparlos según su eficiencia</li>
+                <li>En conjunto, estas representaciones constituyen recursos pedagógicos y prácticos que fortalecen la enseñanza y el análisis de algoritmos.</li>
+                                
+            </ul>
+            <p>Estas características hacen de la algoritmia un elemento
+               esencial para el desarrollo de software eficiente, seguro y escalable.
+            </p>
+        </div>   
+               
+        <br>
+        
+<h4>1.1.3 Abstracción y tipo de dato abstracto</h4>
+        
+        <p>La abstracción en ciencias de la computación consiste en identificar las características esenciales de un objeto o problema y 
+           omitir los detalles irrelevantes para su análisis o resolución. Este principio permite simplificar sistemas complejos al
+           centrarse en los aspectos más relevantes para el diseño de soluciones, facilitando la comprensión, la organización de datos y
+           la programación estructurada.</p>
+
+        <ol>
+            <li><strong>Tipo de Dato Abstracto (TDA):</strong>
+                <p>Un tipo de dato abstracto (TDA) es un modelo matemático y lógico que define un conjunto de datos y las operaciones
+                   permitidas sobre ellos, sin especificar cómo se implementan internamente. Los TDA, como pilas, colas, listas o árboles,
+                   proporcionan una interfaz clara para el usuario, mientras que los detalles de implementación permanecen ocultos.
+                   Esto asegura independencia entre el uso y la programación interna, lo que promueve modularidad y reutilización en
+                   el desarrollo de software.</p>
+            </li>
+           
+        </ol>
+
+        <div class="highlight">
+            <p>En resumen, La abstracción simplifica problemas al resaltar lo esencial y ocultar lo irrelevante (Joyanes Aguilar, 2008).
+               Los tipos de datos abstractos (TDA) definen estructuras y operaciones sin detallar su implementación, promoviendo modularidad y
+               reutilización. Ambos son claves para diseñar sistemas eficientes y escalables.</p>
+        </div>
+
+        <h4>Abstracción en el desarrollo de software</h4>
+
+        <p>En el desarrollo de software, la abstracción implica dividir un problema en componentes fundamentales y considerar
+           tres elementos clave para su resolución:</p>
+
+        <h4>Datos de entrada</h4>
+
+        <p>Corresponden a la información necesaria para resolver el problema. Estos datos pueden ser homogéneos (del mismo tipo) o heterogéneos
+           (de distintos tipos) y representan los valores iniciales requeridos para el procesamiento.</p>
+
+        <h4>Procesamiento</h4>
+
+        <p>Es el conjunto de operaciones aplicadas sobre los datos de entrada mediante algoritmos, los cuales siguen reglas
+           específicas del paradigma de programación empleado. Dichos algoritmos transforman la información para producir soluciones
+           parciales o completas al problema.</p>
+
+        <h4>Datos de salida</h4>
+
+        <p>Son los resultados obtenidos tras el procesamiento, que pueden integrarse para ofrecer una solución final al problema planteado (González y Zapata, 2016).</p>
+
+        <p>La abstracción permite además modelar los datos en diversas estructuras, que abarcan desde variables simples, arreglos y cadenas, hasta estructuras más
+          complejas como los structs, lo que facilita la organización y el procesamiento eficiente de la información.</p>
+        
+        <figure>
+            <span>Código 2. Ejemplo para determinar si un número es par o impar aplicando el principio de abstracción.</span>
+        </figure>
+
+       <div class="centrar-imagen">
+            <img src="images/Codigo_22.jpeg" alt="Codigo_22" style="max-width: 400px; max-height: 400px;">
+        </div>
+        <br />
+
+
+        <p>El programa ejemplifica el principio de abstracción al dividir el problema en entrada, procesamiento y salida. En la entrada,
+           el usuario proporciona un número entero; en el procesamiento, se aplica el operador módulo (%) para verificar si es divisible entre
+           dos; y en la salida, el sistema muestra si el número es par o impar.</p>
+         <p>Este enfoque evidencia cómo la abstracción facilita la organización del algoritmo y la comprensión del código. Al separar cada etapa,
+            se mejora la claridad, la mantenibilidad y la posibilidad de reutilización, aspectos considerados esenciales en el diseño y enseñanza
+            de programas informáticos.</p>  
+
+
+
+ <div class="highlight">
+            <h4>Resumen del principio de abstracción en programación. </h4>
+            <ul>
+                <li>La abstracción en programación se entiende como el proceso de simplificar un problema al dividirlo en tres componentes esenciales: entrada,
+                    procesamiento y salida. Este enfoque permite organizar de manera clara la lógica de los algoritmos y facilita su comprensión tanto en la
+                    enseñanza como en la práctica del desarrollo de software.</li>
+                <li>El ejemplo en código C presentado muestra cómo se aplican estos tres elementos: el usuario proporciona un número entero como entrada,
+                    el algoritmo aplica una operación aritmética como procesamiento y finalmente se genera un resultado que indica si el número es par o impar
+                    como salida.</li>
+                                
+            </ul>
+            <p>Este método no solo ayuda a comprender la estructura de un programa, sino que también fomenta la modularidad y la reutilización de código,
+               aspectos clave en la construcción de sistemas eficientes y escalables.
+            </p>
+        </div>   
+               
+
+<h4>1.1.4 Orden de complejidad 𝑂() de un algoritmo</h4>
+        
+        <p>La abstracción en ciencias de la computación consiste en identificar las características esenciales de un objeto o problema y 
+           omitir los detalles irrelevantes para su análisis o resolución. Este principio permite simplificar sistemas complejos al
+           centrarse en los aspectos más relevantes para el diseño de soluciones, facilitando la comprensión, la organización de datos y
+           la programación estructurada.</p>
+
+        <ol>
+            <li><strong>Complejidad algorítmica:</strong>
+                <p>El análisis de la complejidad algorítmica busca determinar la eficiencia de un algoritmo en términos de los
+                   recursos que emplea, principalmente el tiempo de ejecución y el espacio en memoria. La notación O() (Big O) describe
+                   el comportamiento asintótico de un algoritmo, es decir, cómo varía su rendimiento a medida que aumenta el tamaño de
+                   los datos de entrada (Cormen, Leiserson, Rivest y Stein, 2022). Esta medida permite comparar y diferentes algoritmos 
+                   que resuelven un mismo problema, no sólo por su corrección y sino también por su eficiencia.</p>
+            <li><strong>Tipos de complejidad temporal</strong>
+                <p>La complejidad temporal se clasifica en varios órdenes de crecimiento, cada uno con características particulares:</p>
+
+           
+                <p>a) Algoritmos secuenciales: siguen un flujo lineal de instrucciones, donde cada paso se ejecuta en un orden estricto
+                      hasta llegar al resultado final. Son los más sencillos y se utilizan en problemas directos sin necesidad de decisiones
+                      complejas.</p>
+
+        <p>b) O(1):<em>Constante.</em> <i></i> El tiempo de ejecución no depende del tamaño de la entrada. Ejemplo: acceder a un elemento en un arreglo.</p>
+
+
+        <p>c) O(log n): <em>Logarítmica. </em> <i></i> El tiempo crece lentamente conforme aumenta la entrada. Ejemplo: búsqueda binaria.</p>
+
+
+        <p>d) O(n): <em>Lineal.</em>  <i></i> El tiempo crece de manera proporcional al tamaño de la entrada. Ejemplo: recorrido de una lista.</p>
+
+        <p>e) O(n log n): <em>Casi lineal.</em> <i></i> Propia de algoritmos eficientes de ordenamiento, como mergesort o quicksort.</p>
+
+        <p>f) O(n²): <em>Cuadrática.</em> <i></i> El tiempo crece de forma cuadrática respecto al tamaño de la entrada. Ejemplo: ordenamiento por burbuja.</p>
+
+         <p>g) O(2ⁿ) y O(n!). Complejidades exponenciales y factoriales, asociadas a problemas combinatorios que son inviables en escala (García y Joyanes, 2017) y
+        </p>
+               <li><strong>Complejidad espacial:</strong>
+                <p>Además del tiempo, es relevante analizar el uso de memoria. La complejidad espacial mide el espacio adicional requerido 
+                   por un algoritmo durante su ejecución, considerando variables, estructuras de datos auxiliares y recursividad. Un algoritmo
+                   eficiente busca optimizar tanto el tiempo como la memoria utilizada, equilibrando estos recursos según el problema a
+                   resolver.</p>
+               <li><strong>Importancia del análisis de complejidad:</strong>
+                <p>El estudio de la complejidad no se limita a la teoría; constituye un criterio práctico en el diseño y la selección de algoritmos.
+                   Como señalan Cormen et al. (2022), la eficiencia algorítmica determina la viabilidad de un programa al procesar grandes volúmenes
+                   de datos. En el ámbito académico, su enseñanza fomenta una visión crítica y analítica en los estudiantes, orientándolos a diseñar
+                   soluciones no sólo funcionales, sino también escalables y sostenibles.</p>
+
+              </li>
+           
+        </ol>
+
+
+
+        <p><strong>¿Por qué es importante el problema de ordenamiento?</strong></p>
+    </div>
+
+    <div class="paginacion">
+        <a href="Cuestionario1_1.html" class="btn-paginacion">Siguiente</a>
+    </div>
+
+    <div id="footer-container"></div>
+
+
+    <script>
+        $(document).ready(function () {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    initNavbarScripts(); // Si necesitas inicializar scripts del navbar
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+    </script>
+
+
+</body>
+
+</html>

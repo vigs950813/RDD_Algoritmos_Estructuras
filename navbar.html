@@ -1,0 +1,410 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+<script type="text/javascript" src="jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #2c3e50;
+        --text-color: #333;
+        --text-light: #7f8c8d;
+    }
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .navbar-brand,
+    .nav-link,
+    .boton-disp {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+    }
+
+    .navbar-personalizado {
+        background-color: var(--primary-color);
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .disposicion {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .disposicion-logos {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 20px;
+    }
+
+    .disposicion-logos div {
+        display: flex;
+        align-items: center;
+
+    }
+
+
+
+    .navbar-brand {
+        color: white !important;
+        font-size: 1.5rem;
+        margin-right: 30px;
+    }
+
+    .nav-link {
+        color: rgba(255, 255, 255, 0.8) !important;
+        padding: 8px 15px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: white !important;
+        transform: translateY(-2px);
+    }
+
+    .dropdown-menu {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .dropdown-item {
+        padding: 8px 20px;
+        transition: all 0.2s;
+    }
+
+    .dropdown-item:hover {
+        background-color: var(--secondary-color);
+        color: white !important;
+    }
+
+    .container {
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    .presentacion {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 40px;
+        border-radius: 10px;
+        margin: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .presentacion:hover {
+        transform: translateY(-5px);
+    }
+
+    .boton-disp {
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px 20px;
+        border: none;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .boton-disp:hover {
+        background-color: var(--dark-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .boton-disp i {
+        transition: transform 0.3s ease;
+    }
+
+    .boton-disp.collapsed i {
+        transform: rotate(-90deg);
+    }
+
+    #div_1,
+    #div_2,
+    #div_3,
+    #div_4,
+    #div_5 {
+        padding: 25px;
+        background-color: white;
+        border-radius: 0 0 8px 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid var(--secondary-color);
+    }
+
+    footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 50px 0 0;
+        margin-top: 50px;
+    }
+
+    footer h5 {
+        color: white;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    footer .nav-link {
+        color: rgba(255, 255, 255, 0.7) !important;
+        padding: 5px 0 !important;
+    }
+
+    footer .nav-link:hover {
+        color: white !important;
+        padding-left: 10px !important;
+    }
+
+    .border-top {
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .social-icons a {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 10px;
+        transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+        color: var(--secondary-color);
+        transform: translateY(-3px);
+    }
+
+    .color-text {
+        color: white;
+    }
+
+    .renglones {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .margin-padding {
+        margin: 0;
+        padding: 0;
+    }
+
+    @media (max-width: 992px) {
+        .disposicion {
+            flex-direction: column;
+        }
+
+        .navbar-brand {
+            margin-bottom: 15px;
+        }
+
+        .presentacion {
+            padding: 20px;
+        }
+
+        .tamano {
+            font-size: 10px;
+        }
+
+        .nav-link {
+            padding: 2px;
+        }
+
+    }
+
+    @media (max-width: 1200px) {
+        .tamano {
+            font-size: 12px;
+        }
+
+
+        .nav-link {
+            padding: 1px;
+        }
+    }
+
+
+
+
+
+    .highlight {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-left: 4px solid var(--secondary-color);
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    figure {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    figcaption {
+        font-style: italic;
+        margin-top: 10px;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-personalizado">
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-5 disposicion-logos">
+            <div><img src="images/EscudoNuevo.png" class="" width="80" height="120" alt="logo" /></div>
+
+
+
+            <div class="color-text renglones tamano flex justify-content-center" style="text-align: center;">
+                <p class="margin-padding">Instituto Politécnico Nacional</p>
+                <p class="margin-padding">Escuela Superior de Cómputo</p>
+
+            </div>
+            <div><img src="images/logoBlancoESCOM.png" class="" width="80" height="80" alt="logo" /></div>
+        </div>
+
+
+
+        <div class="col-lg-7 collapse navbar-collapse disposicion" id="navbarContent">
+            <!--div>
+                <a class="navbar-brand" href="/">Inicio</a>
+            </div-->
+
+            <ul class="navbar-nav tamano">
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Inicio
+                    </a>
+                    <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="index.html#Intencion">Intención educativa</a>
+                        <a class="dropdown-item" href="index.html#Unidad_competencia">Unidad de competencia</a>
+                        <a class="dropdown-item" href="index.html#Proposito">Propósito de la unidad de aprendizaje</a>
+                        <a class="dropdown-item" href="index.html#Metodologia">Metodología</a>
+                        <a class="dropdown-item" href="index.html#Requerimientos">Requerimientos</a>
+                        <a class="dropdown-item" href="index.html#Contactos">Contactos</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="Unidad1_1.html" id="navbarDropdown1" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Contenido
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="Unidad1_1.html">1.1 Algoritmia</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="Unidad1_2.html">1.2 El problema del ordenamiento</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="Unidad1_3.html">1.3 El problema de la búsqueda</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="Unidad1_4.html">1.4 Exploración exhaustiva y vuelta atrás</a>
+                            <div class="dropdown-divider"></div>
+                          
+
+                        </div>
+                   
+                </li>
+                <!--li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown2" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Inicio
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="/#div_1">Intención educativa</a>
+                        <a class="dropdown-item" href="/#div_2">Unidad educativa</a>
+                        <a class="dropdown-item" href="/#div_3">Proposito de la unidad de aprendizaje</a>
+                        <a class="dropdown-item" href="/#div_4">Metodologia</a>
+                        <a class="dropdown-item" href="/#div_5">Requerimientos</a>
+                        <a class="dropdown-item" href="/#div_6">Contactos</a>
+                        
+                        
+                    </div>
+                </li-->
+                <li class="nav-item">
+                    <a class="nav-link" href="https://escomisr.github.io/Algoritmos/glosario.html">Glosario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://escomisr.github.io/Algoritmos/referencias.html">Lista de referencias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="" href="https://escomisr.github.io/Algoritmos/manual_usuario.html">Manual de usuario</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+
+
+            if (window.location.href.includes("index.html")) {
+                $("#dropdownMenu").css({
+                    'display': 'none',
+                });
+                $("#navbarDropdown").removeClass('dropdown-toggle');
+                $("#dropdownMenu").css({
+                    'display': 'none',
+                });
+            }
+        });
+    </script>
+</nav>

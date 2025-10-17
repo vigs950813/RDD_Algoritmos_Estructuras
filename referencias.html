@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand,
+        .nav-link,
+        .boton-disp {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .navbar-personalizado {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .disposicion {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .disposicion-logos {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .disposicion-logos div {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+            margin-right: 30px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 8px 15px !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .dropdown-item {
+            padding: 8px 20px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--secondary-color);
+            color: white !important;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .presentacion {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+
+
+        .presentacion:hover {
+            transform: translateY(-5px);
+        }
+
+        .boton-disp {
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .boton-disp:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton-disp i {
+            transition: transform 0.3s ease;
+        }
+
+        .boton-disp.collapsed i {
+            transform: rotate(-90deg);
+        }
+
+        #div_1,
+        #div_2,
+        #div_3,
+        #div_4,
+        #div_5 {
+            padding: 25px;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        footer h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        footer .nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+            padding: 5px 0 !important;
+        }
+
+        footer .nav-link:hover {
+            color: white !important;
+            padding-left: 10px !important;
+        }
+
+        .border-top {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .color-text {
+            color: white;
+        }
+
+        .renglones {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            .disposicion {
+                flex-direction: column;
+            }
+
+            .navbar-brand {
+                margin-bottom: 15px;
+            }
+
+            .presentacion {
+                padding: 20px;
+            }
+        }
+
+        .texto-justificado {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .texto-cursiva {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar-container"></div>
+
+    <div class="container">
+
+
+        <h3 style="padding: 10px 10px;">Lista de referencias</h3>
+
+        <div id="referencesAccordion" class="texto-justificado">
+
+            <!-- Referencia 1 -->
+            <div class="">
+                <div class=" p-0" id="headingRef1">
+                    <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                        data-target="#collapseRef1" aria-expanded="false" aria-controls="collapseRef1">
+                <span>1. Aho, A. V., Lam, M. S., Sethi, R., & Ullman, J. D. (2007). <i
+                    class="texto-cursiva">Compilers: Principles, techniques, and tools (2nd ed.).</i>
+                    Pearson/Addison Wesley.</span>
+                    </button>
+                </div>
+            </div>
+            <div class="">
+                <div class=" p-0" id="headingRef1">
+                    <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                        data-target="#collapseRef1" aria-expanded="false" aria-controls="collapseRef1">
+                    <span>2. <i class="texto-cursiva">Algoritmos de Búsqueda: Secuencial y Binaria</i> (Reynoso L. 2020). <a href="https://www.youtube.com/watch?v=B6o8dgLZbV0" target="_blank">https://www.youtube.com/watch?v=B6o8dgLZbV0</a></span>
+                    </button>
+                </div>
+            </div>
+            <div class="">
+                <div class=" p-0" id="headingRef1">
+                    <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                        data-target="#collapseRef1" aria-expanded="false" aria-controls="collapseRef1">
+                <span>3. Brassard, G., & Bratley, P. (1996). <i class="texto-cursiva">Fundamentals of
+                    algorithmics.</i> Prentice Hall.</span>
+                    </button>
+                </div>
+            </div>
+            <div class="">
+                <div class=" p-0" id="headingRef1">
+                    <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                        data-target="#collapseRef1" aria-expanded="false" aria-controls="collapseRef1">
+                <span>4. Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). <i
+                    class="texto-cursiva">Introduction to algorithms (4.ª ed.).</i> MIT Press.</span>
+                    </button>
+                </div>
+            </div>
+            <div class="">
+                <div class=" p-0" id="headingRef2">
+                    <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                        data-target="#collapseRef2" aria-expanded="false" aria-controls="collapseRef2">
+                <span>5. García, A., & Joyanes, L. (2017). <i class="texto-cursiva">Fundamentos de programación:
+                    Algoritmos, estructuras de datos y objetos (3.ª ed.).</i> McGraw-Hill.</span>
+                    </button>
+                </div>
+            </div>
+            <div class=" p-0" id="headingRef10">
+                <button class="boton-disp collapsed texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef10" aria-expanded="false" aria-controls="collapseRef10">
+                <span>6. González, M., & Zapata, J. (2016). <i class="texto-cursiva">Algoritmia y el impacto en la
+                    programación
+                    con órdenes complejas y bases de datos</i> Figura 4.</span>
+
+                </button>
+            </div>
+        </div>
+        <div class="">
+            <div class=" p-0" id="headingRef5">
+                <button class="boton-disp collapsed texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef5" aria-expanded="false" aria-controls="collapseRef5">
+                <span>7. Joyanes Aguilar, L. (2008) <i class="texto-cursiva">Fundamentos de programación:
+                    Algoritmos,
+                    estructuras de datos y objetos (2.ª ed.).</i> McGraw-Hill.</span>
+
+                </button>
+            </div>
+
+        </div>
+        <div class="">
+            <div class=" p-0" id="headingRef6">
+                <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef6" aria-expanded="false" aria-controls="collapseRef6">
+                <span>8. Kleinberg, J., & Tardos, É. (2005). <i class="texto-cursiva">Algorithm design.</i>
+                Pearson/Addison-Wesley.</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="">
+            <div class=" p-0" id="headingRef6">
+                <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef6" aria-expanded="false" aria-controls="collapseRef6">
+                <span>9. Knuth, D. E. (1998). <i class="texto-cursiva">The Art of Computer Programming, Volume 3:
+                    Sorting and Searching (2nd ed.).</i> Addison-Wesley.</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="">
+            <div class=" p-0" id="headingRef6">
+                <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef6" aria-expanded="false" aria-controls="collapseRef6">
+                <span>10. Russell, S. J., & Norvig, P. (2020). <i class="texto-cursiva">Artificial intelligence: A
+                    modern approach (4th ed.).</i> Pearson.</span>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="">
+            <div class=" p-0" id="headingRef7">
+                <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef7" aria-expanded="false" aria-controls="collapseRef7">
+                <span>11. Sedgewick, R., & Wayne, K. (2011). <i class="texto-cursiva">Algorithms (4th ed.).</i>
+                Addison-Wesley.</span>
+                </button>
+            </div>
+        </div>
+        <div class="">
+            <div class=" p-0" id="headingRef8">
+                <button class="boton-disp collapsed texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef8" aria-expanded="false" aria-controls="collapseRef8">
+                <span>12. Sierra, A., & Rojas, B. (2020). <i class="texto-cursiva">Representación de algoritmos en
+                    pseudocódigo.</i> Editorial Académica.</span>
+
+                </button>
+            </div>
+
+        </div>
+        <div class="">
+            <div class=" p-0" id="headingRef8">
+                <button class="boton-disp collapsed texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef8" aria-expanded="false" aria-controls="collapseRef8">
+                <span>13. Silberschatz, A., Korth, H. F., & Sudarshan, S. (2020). <i class="texto-cursiva">Database
+                    System Concepts (7th ed.).</i> McGraw-Hill.</span>
+
+                </button>
+            </div>
+        </div>
+        <div class="">
+            <div class=" p-0" id="headingRef9">
+                <button class="boton-disp texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef9" aria-expanded="false" aria-controls="collapseRef9">
+                <span>14. OpenAI. (2025). <i class="texto-cursiva">Algoritmia y el impacto en la programación con
+                    órdenes complejas y bases de datos</i> [Figura 1].</span>
+                </button>
+            </div>
+        </div>
+        <div class="">
+            <div class=" p-0" id="headingRef3">
+                <button class="boton-disp collapsed texto-justificado" type="button" data-toggle="collapse"
+                    data-target="#collapseRef3" aria-expanded="false" aria-controls="collapseRef3">
+                <span>15. OpenAI. (2025). <i class="texto-cursiva">Algoritmia y el impacto en la programación con
+                    órdenes complejas y bases de datos</i> [Figura 2].</span>
+
+                </button>
+            </div>
+        </div>
+
+       
+    </div>
+
+    </div>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Animación para los acordeones
+
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    initNavbarScripts(); // Si necesitas inicializar scripts del navbar
+                });
+
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+
+
+            $('.boton-disp').click(function () {
+                // Toggle para el icono
+                $(this).find('i').toggleClass('rotate-180');
+
+                // Obtener el div objetivo del collapse
+                var target = $(this).data('target');
+
+                // Esperar a que termine la animación de collapse (300ms por defecto en Bootstrap)
+                setTimeout(function () {
+                    // Verificar si el panel está ahora visible
+                    if ($(target).hasClass('show')) {
+                        // Si está visible, hacer scroll suave hasta él
+                        $('html, body').animate({
+                            scrollTop: $(target).offset().top - 20
+                        }, 300);
+                    }
+                }, 300);
+            });
+
+            // Smooth scrolling para todos los enlaces
+            $("a").on('click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

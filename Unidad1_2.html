@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El problema del ordenamiento</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand,
+        .nav-link,
+        .boton-disp {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        * {
+             text-align: justify;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .navbar-personalizado {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .disposicion {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .disposicion-logos {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .disposicion-logos div {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+            margin-right: 30px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 8px 15px !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .dropdown-item {
+            padding: 8px 20px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--secondary-color);
+            color: white !important;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .imagen-centrada {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+        }
+
+        .presentacion {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .presentacion:hover {
+            transform: translateY(-5px);
+        }
+
+        .boton-disp {
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .boton-disp:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton-disp i {
+            transition: transform 0.3s ease;
+        }
+
+        .boton-disp.collapsed i {
+            transform: rotate(-90deg);
+        }
+
+        #div_1,
+        #div_2,
+        #div_3,
+        #div_4,
+        #div_5 {
+            padding: 25px;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        footer h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        footer .nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+            padding: 5px 0 !important;
+        }
+
+        footer .nav-link:hover {
+            color: white !important;
+            padding-left: 10px !important;
+        }
+
+        .border-top {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .color-text {
+            color: white;
+        }
+
+        .renglones {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            .disposicion {
+                flex-direction: column;
+            }
+
+            .navbar-brand {
+                margin-bottom: 15px;
+            }
+
+            .presentacion {
+                padding: 20px;
+            }
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        figcaption {
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #4285f4;
+            margin: 20px 0;
+        }
+
+        .paginacion {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .btn-paginacion {
+            padding: 10px 25px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-paginacion:hover {
+            background-color: #3498db;
+            text-decoration: none;
+        }
+
+        .btn-paginacion:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar-container">
+        
+    </div>
+
+
+    <div class="container">
+    
+        <div class="presentacion" style="color: #f8f9fa;">
+            <h2>1.2 El problema del ordenamiento </h2>
+        </div>
+
+        <div class="section">
+            <p>El problema del ordenamiento consiste en reorganizar un conjunto de elementos, generalmente almacenados 
+               en una estructura de datos como un arreglo o lista, siguiendo un criterio específico, ya sea ascendente o
+               descendente. Este proceso es fundamental en Informática porque facilita la búsqueda, el análisis y la gestión
+               eficiente de la información (Cormen, Leiserson, Rivest, y Stein, 2022).</p>
+
+        <h4>Importancia del ordenamiento</h4>
+
+             <p>El ordenamiento no solo organiza los datos, sino que también permite optimizar otros algoritmos, como los
+                de búsqueda binaria, que requieren una lista previamente ordenada. Además, constituye la base para tareas de
+                análisis de datos, visualización y procesamiento de grandes volúmenes de información. En este sentido, su estudio
+                es crucial en el diseño de software y en el aprendizaje de estructuras de datos (García y Joyanes, 2017).</p>  
+
+        <h4>Clasificación de algoritmos de ordenamiento</h4>
+            
+            <ul class="feature-list">
+                <li>Por complejidad temporal. Existen algoritmos simples como burbuja, selección o inserción con complejidad
+                    cuadrática O(n²), y algoritmos más eficientes como mergesort, quicksort o heapsort, que alcanzan complejidad O(n log n).</li>
+                <li>Por estabilidad. Algunos algoritmos conservan el orden relativo de los elementos iguales (ejemplo: mergesort),
+                    mientras que otros no lo garantizan (ejemplo: quicksort)..</li>
+                <li>Por estrategia. Se distinguen métodos basados en comparación (burbuja, inserción, mergesort) y otros no basados en comparación,
+                    como radix sort, que aprovechan características específicas de los datos.</li>
+            </ul>
+
+            <p>El problema del ordenamiento es un caso clásico para el estudio del análisis de complejidad. Comparar algoritmos en términos
+               de su costo temporal y espacial permite elegir la solución más adecuada para cada contexto. Así, ordenar un conjunto pequeño de
+               datos puede resolverse con algoritmos sencillos como inserción, mientras que en grandes volúmenes es preferible aplicar algoritmos
+               eficientes como mergesort o quicksort.</p>
+               
+            <p>Los algoritmos de ordenamiento simples son los más básicos y fáciles de implementar, aunque resultan ineficientes en grandes 
+               volúmenes de datos. El ordenamiento burbuja consiste en comparar e intercambiar elementos adyacentes hasta que toda la lista esté 
+               ordenada, con una complejidad temporal de O(n²) (Cormen, Leiserson, Rivest, y Stein, 2022). Por su parte, el ordenamiento por 
+               selección selecciona el elemento mínimo en cada pasada y lo coloca en la posición correspondiente, también con una complejidad
+               de O(n²) (Knuth, 1998). Finalmente, el ordenamiento por inserción coloca cada elemento en su posición adecuada dentro de la 
+               parte previamente ordenada, siendo más eficiente en listas pequeñas o casi ordenadas, con complejidad O(n²).</p> 
+               
+            <p>Dentro de los algoritmos eficientes basados en divide y vencerás, el quicksort selecciona un pivote y divide el arreglo en sublistas 
+               menores y mayores, alcanzando una complejidad promedio de O(n log n), aunque en el peor de los casos puede  llegar a O(n²).
+               Otro ejemplo es el mergesort, que divide el arreglo en mitades, las ordena recursivamente y luego combina los resultados, manteniendo
+               siempre una complejidad O(n log n) (Knuth, 1998).  De igual modo, el heapsort construye un montículo (heap) y extrae repetidamente
+               el valor máximo o mínimo, logrando también  una complejidad O(n log n) y con la ventaja de no requerir memoria adicional
+               significativa.</p>    
+
+            <p>Por último, los algoritmos de ordenamiento no comparativos aprovechan propiedades adicionales de los datos. El counting sort ordena
+               contando las ocurrencias de cada valor, con una complejidad de O(n + k), donde k representa el rango de valores (Sedgewick y Wayne, 2011). 
+               El radix sort procesa los números dígito por dígito usando un método estable como base, alcanzando una complejidad de O(nk), siendo útil
+               en datos numéricos con un rango definido (Knuth, 1998). Finalmente, el bucket sort distribuye los elementos en “cubetas” o intervalos, que luego se ordenan 
+               individualmente, alcanzando una complejidad O(n + k) en condiciones de datos uniformemente distribuidos.</p>
+
+        <p></p>
+            <figure>
+               <span>Figura 6. Mapa conceptual de algoritmos de ordenamiento. Adaptado de Cormen, T. H., Leiserson, C. E., Rivest, R. L., y Stein, C. (2022). </span>
+            </figure>
+            
+                <img src="images/figura7.png" alt="Figura_7" class= "imagen-centrada" style="max-width: 600px; max-height: 600px;">
+            
+            <br>
+        </div>
+
+        <div class="section" id="estructuras">
+            <h4>1.2.1 Ordenamiento por inserción</h4>
+
+            <div class="subsection">
+                <p>El ordenamiento por inserción es un algoritmo sencillo que organiza los elementos de una lista de forma progresiva,
+                   tomando uno por uno y ubicándolos en la posición correcta dentro de la parte ya ordenada. Su funcionamiento es comparable
+                   al de organizar cartas en la mano: en cada paso, se selecciona un nuevo elemento y se compara con los anteriores hasta
+                   insertarlo en el lugar adecuado.</p>
+
+                <p>Este método es particularmente eficiente en listas pequeñas o que ya están casi ordenadas, ya que en el mejor de los
+                   casos logra una complejidad temporal de O(n). Sin embargo, cuando la lista está completamente desordenada, tanto en el
+                   caso promedio como en el peor escenario, su complejidad es O(n²), lo que lo convierte en un algoritmo poco recomendable
+                   para grandes volúmenes de datos.</p> 
+            
+                 <p>En términos de estabilidad, el ordenamiento por inserción conserva el orden relativo de los elementos iguales, 
+                    lo que lo hace útil en situaciones donde se requiere mantener esta característica. Por ello, además de su claridad
+                    conceptual, tiene un gran valor pedagógico como introducción a los algoritmos de ordenamiento más complejos.</p>   
+
+                
+        
+        <figure>
+            <span>Código 3. Ejemplo de pseudocódigo del algoritmo de ordenamiento por inserción</span>
+       
+        </figure>
+        
+            <img src="images/codigo_3.jpeg" alt="Codigo_3" class= "imagen-centrada" style="max-width: 500px; max-height: 500px;">
+      
+  
+  
+        <div class="highlight">
+            <h4>Resumen de los algoritmos de ordenamiento y el método de inserción.</h4>
+            <ul>
+                <li>Los algoritmos de ordenamiento permiten organizar datos para facilitar su búsqueda y uso. Se dividen en simples (burbuja, selección e inserción),
+                    eficientes (quicksort, mergesort y heapsort) y no comparativos, cada uno con diferentes niveles de eficiencia.</li>
+                <li>Los algoritmos simples son fáciles de aplicar, pero poco eficientes en grandes volúmenes, pues alcanzan una complejidad de O(n²).
+                    Se usan más en contextos educativos o listas pequeñas.</li>
+                <li>Los algoritmos eficientes logran complejidades de O(n log n), siendo más adecuados para grandes cantidades de datos. Suelen basarse en
+                    la recursividad o estructuras como montículos.</li>
+                <li>Los algoritmos no comparativos aprovechan propiedades de los datos, como su rango o dígitos. Funcionan muy bien en casos específicos,
+                    logrando complejidades de O(n + k) o O(nk).</li>   
+                <li>El ordenamiento por inserción, dentro de los simples, destaca por su claridad y estabilidad. Es útil en listas cortas o casi
+                    ordenadas, aunque en el peor caso llega a O(n²), lo que lo hace poco eficiente en datos extensos.</li>    
+                    
+            </ul>
+            <p>Este método no solo ayuda a comprender la estructura de un programa, sino que también fomenta la modularidad y la reutilización de código,
+               aspectos clave en la construcción de sistemas eficientes y escalables.
+            </p>
+        </div>   
+                    
+        <br>
+                     
+            </div>
+
+            <div class="subsection">
+                <h4>1.2.2 Ordenamiento por selección</h4>
+                <p>El ordenamiento por selección es un algoritmo simple que funciona seleccionando repetidamente el elemento más pequeño (o más grande,
+                   según el caso) de la lista desordenada y colocándolo en la posición correcta dentro de la lista ordenada. Este procedimiento se repite
+                   hasta que todos los elementos se encuentran organizados. Aunque su implementación es sencilla, el número de comparaciones siempre es 
+                   proporcional a n², independientemente del orden inicial de los datos.</p>
+
+                <p>Este algoritmo no es estable, ya que los elementos iguales pueden cambiar su orden relativo al intercambiarse posiciones. Sin embargo,
+                   tiene la ventaja de realizar un número reducido de intercambios en comparación con otros métodos simples como el burbuja. Su complejidad
+                   temporal en el mejor promedio y peor caso es de O(n²), lo que lo hace poco eficiente en listas grandes, aunque adecuado para volúmenes
+                   pequeños de datos o cuando se buscan implementaciones fáciles de comprender.</p>
+
+                <p>Pedagógicamente, el ordenamiento por selección se utiliza como ejemplo introductorio en cursos de algoritmia, ya que ilustra
+                   el proceso sistemático de comparar y mover elementos con claridad, aun cuando no sea el método más eficiente en la 
+                   práctica.</p>
+
+            <div class="subsection">
+
+                <h4>1.2.3 Ordenamiento de burbuja</h4>
+                <p>El ordenamiento de burbuja es uno de los algoritmos más simples para organizar datos. Su funcionamiento consiste en recorrer repetidamente
+                   la lista, comparando elementos adyacentes y realizando intercambios si están en el orden incorrecto. Este proceso se repite hasta que no
+                   se requieren más cambios, lo que indica que la lista ya está ordenada. Su nombre proviene del efecto de los elementos más grandes que “suben”
+                   hacia el final de la lista en cada iteración, como si fueran burbujas en un líquido (Cormen, Leiserson, Rivest, y Stein, 2022).</p>
+
+                <p>La complejidad temporal del algoritmo en el peor y promedio caso es O(n²), ya que cada elemento debe compararse repetidamente con el resto.
+                   Sin embargo, en el mejor caso, cuando la lista ya está ordenada, puede alcanzar una eficiencia de O(n) si se introduce una bandera que detenga
+                   el proceso al no detectar intercambios. Aunque es estable (conserva el orden relativo de los elementos iguales), su ineficiencia en grandes
+                   volúmenes de datos limita su aplicación práctica (Knuth, 1998)</p>
+
+                <p>Pese a sus limitaciones, el ordenamiento de burbuja es ampliamente utilizado en la enseñanza inicial de algoritmos, ya que ilustra de manera
+                   clara los principios básicos de comparación e intercambio de datos. Su valor pedagógico radica en su sencillez conceptual más que en su eficiencia,
+                   lo que lo convierte en un buen punto de partida para introducir algoritmos más avanzados (Sedgewick y Wayne, 2011).</p>
+
+    
+
+            <figure>
+                <span>Figura 7. Ordenamiento por inserción, selección y burbuja. T. H., Leiserson, C. E., Rivest, R. L., y Stein, C. (2022).</span>
+               
+            </figure>
+           
+                <img src="images/figura8.png" alt="Figura_8" class= "imagen-centrada" style="max-width: 600px; max-height: 600px;">
+            
+            <br>
+
+    <div class="subsection">
+                <h4>1.2.4 Ordenamiento por mezcla</h4>
+                  <p>El ordenamiento por mezcla (merge sort) es un algoritmo de ordenamiento eficiente basado en la estrategia de divide y vencerás. Su funcionamiento
+                    consiste en dividir recursivamente la lista en mitades hasta obtener sublistas de un solo elemento para luego fusionarlas en orden hasta reconstruir
+                    la lista completa ordenada. Esta técnica garantiza una estructura sistemática que mantiene la estabilidad del orden relativo entre elementos
+                    iguales (Cormen, Leiserson, Rivest, y Stein, 2022).</p>
+
+                  <p>La complejidad temporal de merge sort es O(n log n) en el mejor promedio y peor caso, lo que lo convierte en un algoritmo altamente predecible en
+                     cuanto a rendimiento. Sin embargo, su principal desventaja es el uso de memoria adicional para almacenar sublistas durante el proceso de fusión,
+                     lo que implica un costo espacial de O(n). Aun así, es ampliamente utilizado en contextos donde la estabilidad y la eficiencia son
+                     necesarias (Knuth, 1998).</p>
+                  <p>Desde el punto de vista pedagógico, merge sort es un ejemplo clásico de cómo aplicar la recursividad en la solución de problemas complejos.
+                     Su estudio facilita la comprensión de la estrategia de dividir y conquistar, fundamental en algoritmia y lo convierte en una de las bases
+                     para algoritmos más avanzados (Sedgewick y Wayne, 2011).</p>
+                    
+     </div>
+            </div>
+
+
+                <div class="quote">
+                    Importancia de ordenamiento por mezcla, así como:
+                </div>
+                <br>
+                <h5>Ventajas:</h5>
+                <ul class="feature-list">
+                    <li>Eficiencia garantizada: mantiene una complejidad de O(n log n) en el mejor promedio y peor caso, lo que asegura un rendimiento 
+                        estable incluso en grandes volúmenes de datos.</li>
+                    <li>Estabilidad: conserva el orden relativo de los elementos iguales, lo que lo hace útil en aplicaciones donde este aspecto es
+                        importante, como bases de datos o algoritmos.</li>
+                    <li>Enfoque recursivo claro: sirve como ejemplo pedagógico de la técnica de divide y vencerás, lo que facilita la enseñanza de
+                        algoritmia y diseño de algoritmos eficientes.</li>
+                    <li>Buen desempeño en datos externos: es especialmente apropiado para ordenar grandes cantidades de información almacenada en
+                        discos o memorias secundarias, ya que accede a los datos de manera secuencial.</li>
+                </ul>
+
+                <h5>Desventajas:</h5>
+                <ul class="feature-list">
+                    <li>Consumo de memoria: requiere espacio adicional O(n) para almacenar las sublistas durante el proceso de fusión, lo que lo 
+                        hace menos eficiente en sistemas con memoria limitada.</li>
+                    <li>Rendimiento en arreglos pequeños: en listas reducidas, otros algoritmos más simples como el ordenamiento por inserción
+                        pueden ser más rápidos debido al menor costo de sobrecarga.</li>
+                    <li>Implementación más compleja: en comparación con métodos básicos como burbuja o selección, su código requiere mayor cuidado,
+                        especialmente en la función de fusión.</li>
+                    <li>No in-place: a diferencia de quicksort o heapsort, merge sort no es un algoritmo en el lugar (in-place), pues necesita
+                        memoria extra, lo cual limita su aplicación en entornos restringidos.</li>
+                </ul>
+            </div>
+            <br>
+            <div class="subsection">
+
+                <h4>1.2.5 Comparación de órdenes de complejidad</h4>
+                <p>El análisis de la complejidad algorítmica permite comparar la eficiencia de los algoritmos de ordenamiento en distintos escenarios.
+                   Cada algoritmo puede comportarse de manera diferente según el tamaño de los datos y su orden inicial, por lo que resulta esencial
+                   evaluar su rendimiento en el mejor caso, peor caso y caso promedio. Comprender estas diferencias permite seleccionar el algoritmo
+                   más adecuado para cada contexto.</p>
+
+                <p>En los algoritmos simples como el de burbuja, selección e inserción, la complejidad en el peor y promedio caso es O(n²), lo que
+                   limita su eficiencia en grandes volúmenes de datos. No obstante, el ordenamiento por inserción puede alcanzar O(n) en el mejor
+                   escenario si la lista está casi ordenada, lo que lo hace útil en situaciones específicas. </p>  
+                
+                <p>Por otro lado, los algoritmos eficientes como mergesort, heapsort y quicksort logran un rendimiento promedio de O(n log n), lo
+                   que los convierte en opciones más escalables y confiables. Mergesort destaca por su estabilidad y consistencia, mientras que 
+                   quicksort puede degradarse a O(n²) en el peor caso si no se elige adecuadamente el pivote, aunque con optimizaciones prácticas
+                   suele ser uno de los más veloces.</p>  
+                 
+                <p>Finalmente, los algoritmos no comparativos, como counting sort o radix sort, alcanzan complejidades de O(n + k) o O(nk) dependiendo
+                   de las condiciones de entrada. Estos métodos son extremadamente rápidos en escenarios con datos numéricos dentro de un rango limitado,
+                   aunque no resultan útiles en todos los contextos.</p>   
+
+               
+                <br>
+          <div class="subsection">
+                <h4>Ventajas y desventajas de los algoritmos de ordenamiento.</h4>
+ 
+<br>
+            <div class="subsection">
+
+                <h4><p>* Ordenamiento de burbuja</p></h4>
+                <h5>Ventajas:</h5>
+                <ul class="feature-list">
+                    <li>Es un algoritmo muy sencillo de implementar y comprender; además, es estable, ya que conserva el orden 
+                        relativo de los elementos iguales.</li>
+                </ul>
+
+                <h5>Desventajas:</h5>
+                <ul class="feature-list">
+                    <li>Es muy ineficiente en grandes volúmenes de datos, con una complejidad de O(n²) en la mayoría de los
+                        casos.</li>
+                </ul>
+
+
+            <h4><p>* Ordenamiento por selección</p></h4>
+                <h5>Ventajas:</h5>
+                <ul class="feature-list">
+                    <li>Su lógica es clara, requiere un número reducido de intercambios en comparación con el burbuja, y
+                        funciona correctamente sin importar el estado inicial de los datos.</li>
+                    
+                </ul>
+
+                <h5>Desventajas:</h5>
+                <ul class="feature-list">
+                    <li>No es estable y su complejidad es O(n²) en todos los casos, lo que lo hace poco práctico para listas 
+                        grandes (Knuth, 1998).</li>
+                    
+                </ul>
+
+            <h4><p>* Ordenamiento por inserción</p></h4>
+                <h5>Ventajas:</h5>
+                <ul class="feature-list">
+                    <li>Es estable, sencillo y eficiente en listas pequeñas o casi ordenadas, alcanzando una complejidad de O(n)
+                        en el mejor caso.</li>
+                    
+                </ul>
+
+                <h5>Desventajas:</h5>
+                <ul class="feature-list">
+                    <li>Presenta un rendimiento de O(n²) en el promedio y peor caso, por lo que no es adecuado para grandes conjuntos
+                        de datos.</li>
+                    
+                </ul>
+
+            <h4><p>* Ordenamiento por mezcla (Merge Sort)</p></h4>
+                <h5>Ventajas:</h5>
+                <ul class="feature-list">
+                    <li>Tiene un rendimiento consistente de O(n log n) en cualquier escenario, es estable y adecuado para grandes
+                        volúmenes de datos externos, ya que accede a los datos de manera secuencial.</li>
+                    
+                </ul>
+
+                <h5>Desventajas:</h5>
+                <ul class="feature-list">
+                    <li>Requiere memoria adicional de O(n) para las sublistas y su implementación es más compleja que la de los algoritmos simples (Knuth, 1998).</li>
+                    
+                </ul>
+            </div>
+
+ <div class="highlight">
+            <h4>Resumen de los algoritmos de ordenamiento. </h4>
+            <ul>
+                <li>Los algoritmos de ordenamiento organizan datos para optimizar búsquedas y procesos, siendo esenciales en la programación y manejo de información.                    .</li>
+                <li>Los métodos simples como burbuja, selección e inserción son fáciles de entender e implementar, pero ineficientes en grandes volúmenes de datos
+                    por su complejidad de O(n²).</li>
+                <li>Los algoritmos eficientes como merge sort, quicksort y heapsort alcanzan O(n log n), lo que los hace adecuados para grandes conjuntos de datos y
+                    aplicaciones prácticas.</li>
+                <li>Los no comparativos como counting sort y radix sort logran O(n + k) o O(nk) en escenarios específicos, siendo muy útiles con datos numéricos en 
+                    rangos limitados.</li>   
+                  
+                    
+            </ul>
+            <p>Los algoritmos de ordenamiento constituyen una herramienta esencial en la informática, ya que permiten organizar datos de manera eficiente para optimizar
+               búsquedas, análisis y procesamiento de información. Los métodos simples, como burbuja, inserción y selección, cumplen un papel didáctico importante aunque
+               presentan limitaciones en rendimiento; en contraste, algoritmos más avanzados como mergesort, quicksort y heapsort ofrecen un desempeño escalable de O(n log n),
+               mientras que los no comparativos como radix sort o counting sort destacan en contextos específicos. En conjunto, su estudio no sólo permite seleccionar la técnica
+               adecuada según el problema, sino también comprender los fundamentos de la complejidad algorítmica y su impacto en el desarrollo de software 
+               eficiente.
+            </p>
+        </div>   
+
+         
+            </div>
+        </div>
+
+        <p><strong>¿Por qué consideras que el problema de búsqueda en los algoritmos es importante?</strong></p>
+</div>
+        <div class="paginacion">
+            <a href="Cuestionario1_1.html" class="btn-paginacion">Anterior</a>
+            <a href="Cuestionario1_2.html" class="btn-paginacion">Siguiente</a>
+        </div>
+    </div>
+
+     <div id="footer-container"></div>
+
+
+    <script>
+        $(document).ready(function () {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    initNavbarScripts(); // Si necesitas inicializar scripts del navbar
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+    </script>
+
+
+</body>
+
+</html>

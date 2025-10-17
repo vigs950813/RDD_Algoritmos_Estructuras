@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="import" href="navbar.html" id="nav-template">
+    <link rel="import" href="footer.html" id="footer-template">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand,
+        .nav-link,
+        .boton-disp {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .navbar-personalizado {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .disposicion {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .disposicion-logos {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .disposicion-logos div {
+            display: flex;
+            align-items: center;
+        }
+
+
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+            margin-right: 30px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .dropdown-item {
+            padding: 8px 20px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--secondary-color);
+            color: white !important;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .presentacion {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .presentacion:hover {
+            transform: translateY(-5px);
+        }
+
+        .boton-disp {
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .boton-disp:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton-disp i {
+            transition: transform 0.3s ease;
+        }
+
+        .boton-disp.collapsed i {
+            transform: rotate(-90deg);
+        }
+
+        #div_1,
+        #div_2,
+        #div_3,
+        #div_4,
+        #div_5 {
+            padding: 25px;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        footer h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        footer .nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+            padding: 5px 0 !important;
+        }
+
+        footer .nav-link:hover {
+            color: white !important;
+            padding-left: 10px !important;
+        }
+
+        .border-top {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .color-text {
+            color: white;
+        }
+
+        .renglones {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+
+        .centrar-imagen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .disposicion {
+                flex-direction: column;
+            }
+
+            .navbar-brand {
+                margin-bottom: 15px;
+            }
+
+            .presentacion {
+                padding: 20px;
+            }
+
+            .tamano {
+                font-size: 20px;
+            }
+
+            .nav-link {
+                padding: 2px;
+            }
+
+        }
+
+        @media (max-width: 1200px) {
+            .tamano {
+                font-size: 12px;
+            }
+
+
+
+            .nav-link {
+                padding: 1px;
+            }
+        }
+
+
+
+
+
+        .texto-justificado {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .highlightIndex {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-bottom: 4px solid #4285f4;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar-container" style="display: none;"></div>
+    <nav class="navbar navbar-expand-lg navbar-personalizado">
+        <div class="row" style="width: 100%;">
+            <div class="col-lg-5 disposicion-logos">
+                <div><img src="images/EscudoNuevo.png" class="" width="80" height="120" alt="logo" /></div>
+
+                <div class="color-text renglones tamano flex justify-content-center" style="text-align: center;">
+                    <p class="margin-padding">Instituto Politécnico Nacional</p>
+                    <p class="margin-padding">Escuela Superior de Cómputo</p>
+
+                </div>
+                <div><img src="images/logoBlancoESCOM.png" class="" width="80" height="80" alt="logo" /></div>
+            </div>
+
+
+
+            <div class="col-lg-7 collapse navbar-collapse disposicion" id="navbarContent">
+                <!--div>
+                    <a class="navbar-brand" href="/">Inicio</a>
+                </div-->
+
+                <ul class="navbar-nav tamano">
+
+                    <li class="nav-item dropdown ">
+
+                        <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Inicio
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" id="enlaceHeader1" href="index.html#Intencion">Intención
+                                Educativa</a>
+                            <a class="dropdown-item" id="enlaceHeader2" href="index.html#Unidad_competencia">Unidad de
+                                competencia</a>
+                            <a class="dropdown-item" id="enlaceHeader3" href="index.html#Proposito">Propósito de la
+                                unidad de aprendizaje</a>
+                            <a class="dropdown-item" id="enlaceHeader4" href="index.html#Metodologia">Metodología</a>
+                            <a class="dropdown-item" id="enlaceHeader5"
+                                href="index.html#Requerimientos">Requerimientos</a>
+                            <a class="dropdown-item" id="enlaceHeader6" href="index.html#Contactos">Contactos</a>
+                        </div>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="Unidad1_1.html" id="navbarDropdown1" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Contenido
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="Unidad1_1.html">1.1 Algoritmia</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="Unidad1_2.html">1.2 El problema del ordenamiento</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="Unidad1_3.html">1.3 El problema de la búsqueda</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="Unidad1_4.html">1.4 Exploración exhaustiva y vuelta atrás</a>
+                            <div class="dropdown-divider"></div>
+                          
+
+                        </div>
+                    </li>
+                    <!--li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown2" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Inicio
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="/#div_1">Intención educativa</a>
+                            <a class="dropdown-item" href="/#div_2">Unidad educativa</a>
+                            <a class="dropdown-item" href="/#div_3">Proposito de la unidad de aprendizaje</a>
+                            <a class="dropdown-item" href="/#div_4">Metodologia</a>
+                            <a class="dropdown-item" href="/#div_5">Requerimientos</a>
+                            <a class="dropdown-item" href="/#div_6">Contactos</a>
+                            
+                            
+                        </div>
+                    </li-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://escomisr.github.io/Algoritmos/glosario.html">Glosario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://escomisr.github.io/Algoritmos/referencias.html">Lista de referencias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="" href="https://escomisr.github.io/Algoritmos/manual_usuario.html">Manual de usuario</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!--div class="row"-->
+
+
+        <div class="highlightIndex">
+            <h5 class="margin-padding" style="margin-bottom: 10px;">Ingeniería en Sistemas Computacionales</h5>
+            <h5 class="margin-padding" style="margin-bottom: 10px;">Unidad de aprendizaje: Algoritmos y Estructuras de Datos</h5>
+            <h5 class="margin-padding" style="margin-bottom: 10px;">Recurso didáctico digital </h5>
+            <h5 class="margin-padding" style="margin-bottom: 10px;">Objeto de aprendizaje </h5>
+
+            <h5 class="margin-padding" style="margin-bottom: 10px;">Unidad 1: Algoritmos fundamentales</h5>
+        </div>
+
+        <div class="col presentacion texto-justificado">
+
+            <p>
+                ¡Bienvenidas y bienvenidos!
+                <br><br>
+                Es un placer acompañarlos en este recorrido por la unidad 1, “Algoritmos fundamentales”, parte del objeto de
+                aprendizaje digital de la asignatura Algoritmos y Estructuras de Datos. Esta unidad es una de tres que conforman
+                el programa del segundo semestre de la Ingeniería en Sistemas Computacionales en la Escom-IPN, y está
+                diseñada para brindarles herramientas clave en su formación profesional.
+                <br><br>
+                ¿Qué lograrán en esta unidad?
+                <br><br>
+                Adquirirán conocimientos para analizar, reflexionar y aplicar las funciones esenciales de un analista de
+                sistemas, desarrollador de software y soporte técnico. A través de actividades individuales y colaborativas, desarrollarán
+                competencias
+                prácticas que promueven un aprendizaje integral y significativo.<P></P>
+                <br>
+                Es importante destacar lo siguiente:
+                <br>
+            <ul>
+                <li>Como su facilitador estaré guiándolos en cada paso, así que atiendan las indicaciones y planteen cualquier duda
+                    que les surga.</li>
+                <li>Su entusiasmo, participación activa y dedicación serán claves para alcanzar los objetivos. Juntos,
+                    construiremos un espacio de aprendizaje dinámico y enriquecedor.</li>
+            </ul>
+            <br>
+            ¡Comencemos con energía! Les deseo mucho éxito en esta unidad y en el semestre.
+            <br><br>
+            <a href="https://forms.gle/AEL3jbaudnaPC3Nk6"
+                class="btn btn-light" target="_blank">Evaluación diagnóstica</a>
+
+            </p>
+
+
+
+            <!--button class="btn btn-light">Más información</button-->
+        </div>
+
+        <div class="accordion" id="DivGeneral">
+            <div class="card mb-3 border-0" id="">
+                <div class="card-header p-0" id="Intencion">
+                    <button id="IntencionButton" class="boton-disp" type="button">
+                        <span>Intención educativa</span>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </button>
+                </div>
+                <div id="div_1" class="" style="display: none;">
+                    <div class="card-body texto-justificado">
+                        <h4>Intención educativa</h4>
+
+                        <p>La unidad de aprendizaje contribuye al perfil de egreso del Ingeniero en Sistemas Computacionales con el desarrollo
+                           de habilidades para el manejo de los datos en la memoria empleando estructuras de datos y algoritmos de
+                           ordenamiento y búsqueda en los sistemas computacionales. Asimismo, fomenta las habilidades transversales de
+                           trabajo en equipo, comunicación efectiva, ética, resolución de problemas, creatividad e ingenio.<p>
+                           Esta unidad se relaciona de manera antecedente con la de Fundamentos de Programación y Matemáticas Discretas y de
+                           manera consecuente con Análisis y Diseño de Algoritmos, Paradigmas de Programación y Sistemas Operativos. </p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3 border-0">
+                <div class="card-header p-0" id="Unidad_competencia">
+                    <button id="UnidadButton" class="boton-disp" type="button">
+                        <span>Unidad de competencia</span>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </button>
+                </div>
+                <div id="div_2" class="collapse" style="display: none;">
+                    <div class="card-body texto-justificado">
+                        <h4>Unidad de competencia</h4>
+                        <p>Identifica algoritmos fundamentales de la computación con base en sus órdenes de complejidad. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3 border-0">
+                <div class="card-header p-0" id="Proposito">
+                    <button id="PropositoButton" class="boton-disp" type="button">
+                        <span>Propósito de la unidad de aprendizaje</span>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </button>
+                </div>
+                <div id="div_3" class="" style="display: none;">
+                    <div class="card-body texto-justificado">
+                        <h4>Propósito de la unidad de aprendizaje</h4>
+                        <p>Utiliza algoritmos y estructuras de datos con base en sus órdenes de complejidad y caracterÍsticas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3 border-0">
+                <div class="card-header p-0" id="Metodologia">
+                    <button id="MetodologiaButton" class="boton-disp" type="button">
+                        <span>Metodología</span>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </button>
+                </div>
+                <div id="div_4" class="" style="display: none;">
+                    <div class="card-body texto-justificado">
+                        <h4>Metodología de estudio</h4>
+                        <p>Este recurso didáctico tiene como objetivo complementar el curso presencial y proporcionando
+                            un acceso más ágil a los recursos y actividades. Es fundamental seguir las indicaciones y
+                            comunicados del docente.</p>
+                        <h4>Beneficios del uso del recurso</h4>
+                        <p>La principal función de este recurso es fomentar tu aprendizaje, ayudando en la adquisición y
+                            refuerzo de los contenidos temáticos de la asignatura mediante actividades diseñadas
+                            específicamente para este fin. Por ello, es esencial que comprendas la importancia de este
+                            recurso digital.</p>
+                        <p>Es importante destacar que este recurso didáctico digital (objeto de aprendizaje), es
+                            un material de apoyo sin ningun valor en la calificación parcial o final de la unidad de
+                            aprendizaje, su único propósito es servir como una herramienta de apoyo en conocimientos
+                            para reforzar el aprendizaje y desarrollado durante el curso.</p>
+                        <h4>Orientación didáctica</h4>
+                        <p>Este recurso didáctico digital como objeto de aprendizaje se basa en la estrategia de
+                            enseñanza mediante el estudio de
+                            casos, lo cual te permitirá reflexionar, analizar y realizar actividades propias de un
+                            ingeniero de sistemas.</p>
+                        <p>A lo largo del curso, llevarás a cabo diversas actividades, que te ayudarán a desarrollar
+                            habilidades para el manejo de los datos en la memoria empleando estructuras
+                             de datos, algoritmos de ordenamiento y búsqueda en los sistemas computacionales,
+                             para establecer soluciones a los requerimientos en el manejo de programas
+                              con el fin de elaborar el estudio de caso.
+                        </p>
+                        <p>Deberás participar activamente en clase, lo cual enriquecerá tu aprendizaje. Las actividades
+                            en el aula, junto con las tareas de aprendizaje autónomo, te ayudarán a lograr los objetivos
+                            de la unidad de aprendizaje.</p>
+                        <p>Este recurso didáctico digital complementa tu curso, permitiendo el enriquecimiento de los
+                            contenidos y las actividades en el aula a fin de lograr las competencias esperadas.</p>
+                        <p>Podrás acceder al recurso, consultar los contenidos de la unidad y realizar las actividades
+                            según las instrucciones del docente.</p>
+                        <h4>Modalidades de trabajo</h4>
+                        <p><strong>1. Individual:</strong><br> Dedica al menos 4.30 horas de estudio a la semana,
+                            correspondientes a las horas de clase, para leer y analizar los recursos didácticos
+                            digitales en las actividades de aprendizaje. Estos recursos te proporcionarán el
+                            conocimiento teórico necesario para desarrollar las evidencias de aprendizaje que deberás
+                            entregar durante las sesiones de clase.</p>
+                        <p><strong>2. Colaborativo:</strong><br> Durante la clase participa activamente en los debates y
+                            comparte con tus compañeros tus ideas y reflexiones sobre los temas tratados. Esta dinámica
+                            en el aula favorecerá la retroalimentación colectiva, permitirá resolver dudas en conjunto y
+                            enriquecerá tu proceso de aprendizaje en cada sesión.</p>
+                        <h4>Recomendaciones</h4>
+                        <p>Es fundamental que te comprometas con tu aprendizaje, dedicando tiempo y entusiasmo a las
+                            actividades, con el fin de desarrollar las habilidades, actitudes y conocimientos
+                            necesarios.</p>
+                        <p>Para facilitar tu progreso, te sugerimos leer y seguir cuidadosamente las recomendaciones que
+                            te guiarán en tu proceso de aprendizaje tanto individual como colaborativo, apoyándote en
+                            este recurso digital.</p>
+                        <p>Te recomendamos revisar el manual de usuario para familiarizarte con el contenido del
+                            recurso, navegando por el sistema y usando los botones y enlaces disponibles.</p>
+                        <p>Este recurso sirve de apoyo a tus clases, por lo que debes estar atento a las indicaciones
+                            del docente. Realiza las actividades en tiempo y forma, ya que esto contribuirá al
+                            desarrollo de las competencias establecidas.</p>
+                        <h4>Comunicación</h4>
+                        <p>La forma de comunicación con el docente será mediante correo electrónico, donde se te
+                            responderá en un plazo no mayor a 48 horas. Para obtener información de contacto sobre los
+                            docentes, haz clic en el siguiente <a id="enlace" href="index.html#Contactos">enlace.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card mb-3 border-0">
+                <div class="card-header p-0" id="Requerimientos">
+                    <button id="RequerimientosButton" class="boton-disp" type="button">
+                        <span>Requerimientos</span>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </button>
+                </div>
+                <div id="div_5" class="" style="display: none;">
+                    <div class="card-body texto-justificado">
+                        <h4>Requerimientos</h4>
+                        <p><strong>Para hacer uso de este recurso se requiere:</strong></p>
+                        <p>• Conexión a Internet </p>
+                        <p>• Navegador de Internet </p>
+                        <p>• Microsoft Edge (version 85 o superior) </p>
+                        <p>• Google Chrome (versión 85 o superior) </p>
+                        <p>• Mozilla Firefox (versión 80 o superior) </p>
+                        <p>• Opera (Versión 7.0 o superior) </p>
+                        <p>• Android Nougat o superior (App beta) </p>
+                        <div class="row">
+                            <div class="col-md-4" style="text-align: center;">
+                                <img src="images/www.png" alt="Israel" style="max-width: 200px; max-height: 200px;">
+                                <p>Icono por <a
+                                        href="https://www.freepik.com/icon/internet_364089#fromView=search&page=1&position=1&uuid=1ae3a178-9f12-4f70-be89-2cf0bc4ec7bc">Prosymbols</a>
+                                </p>
+                            </div>
+                            <div class="col-md-4" style="text-align: center;">
+                                <img src="images/windows.png" alt="Israel" style="max-width: 200px; max-height: 200px;">
+                                <p>Icono por <a
+                                        href="https://www.freepik.com/icon/windows_888882#fromView=search&page=1&position=1&uuid=e6090961-1377-48e8-a7a8-296097dece64">Pixel
+                                        Perfect</a></p>
+                            </div>
+                            <div class="col-md-4" style="text-align: center;">
+                                <img src="images/Phone.png" alt="Israel" style="max-width: 200px; max-height: 200px;">
+                                <p>Icono por <a
+                                        href="https://www.freepik.com/icon/phone_1142777#fromView=search&page=1&position=21&uuid=a3ed9e5e-91ca-47b7-ba09-6be71dfe9904">Freepik</a>
+                                </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3 border-0">
+
+                <div class="card-header p-0" id="Contactos">
+                    <button id="ContactosButton" class="boton-disp" type="button">
+                        <span>Contactos</span>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </button>
+                </div>
+
+
+                <div id="div_6" class="" style="display: none;">
+                    <div class="card-body texto-justificado">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="centrar-imagen">
+                                    <img src="images/Israel.png" alt="Israel"
+                                        style="max-width: 300px; max-height: 600px;">
+                                </div>
+                                <br>
+                                <div style="text-align: center; height: 70px;">
+                                    <h4 style="margin: 0;">Israel</h4>
+                                    <h4>Salas Ramírez</h4>
+
+                                </div>
+                                <div style="text-align: center;">
+
+                                    <p>Correo: isalasr@ipn.mx</p>
+                                </div>
+
+                                <p>Semblanza: Docente en la Escuela Superior de Cómputo del
+                                    Instituto
+                                    Politécnico Nacional, es doctor y maestro en ciencias de la educación, ingeniero en
+                                    comunicaciones y electrónica de la ESIME Zacatenco, ha trabajado como responsable de
+                                    unidades de Informática y generación de proyectos de Inversión Tecnológica.</p>
+                                <p>
+                                    Sus áreas de interés son: Sistemas Operativos, Administración de Redes, Neurociencia
+                                    en la Educación, Redes Neuronales, Generación de Simuladores Médicos y Plataformas
+                                    Virtuales Aplicados a la Educación.</p>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="centrar-imagen">
+
+                                    <img src="images/Yaxkin.png" alt="Yaxkin"
+                                        style="max-width: 300px; max-height: 600px;">
+                                </div>
+                                <br>
+                                <div style="text-align: center; height: 70px;">
+                                    <h4 style="margin: 0;">Yaxkin </h4>
+                                    <h4>Flores Mendoza</h4>
+
+                                </div>
+                                <div style="text-align: center; ">
+
+                                    <p>Correo: floresya@hotmail.com</p>
+                                </div>
+
+                                <p>Semblanza: Ingeniero en sistemas computacionales, maestro en ciencias de la computación y
+                                   doctor en educación. Docente de tiempo completo del departamento de Ciencias e Ingeniería
+                                   de la Computación de la Escom.</p>
+                                <p>
+                                    Áreas de interés: Neurociencia de la Educación y Redes Neuronales, Metodología de la
+                                    Investigación, Educación en Línea con plataformas virtuales.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="centrar-imagen">
+
+                                    <img src="images/Daniel.png" alt="Daniel"
+                                        style="max-width: 300px; max-height: 600px;">
+                                </div>
+                                <br>
+                                <div style="text-align: center; height: 70px;">
+                                    <h4 style="margin: 0;">Daniel </h4>
+                                    <h4>Cruz García</h4>
+                                </div>
+                                <div style="text-align: center;">
+
+                                    <p> Correo: mrguzman@ipn.mx</p>
+                                </div>
+
+
+                                <p>Semblanza: Profesor de tiempo completo en la Escuela Superior de Cómputo, Ingeniería en Sistemas Computacionales,
+                                    maestro en ciencias en la especialidad de Ingeniería Eléctrica, opción Computación. Áreas de interés: Sistemas Distribuidos,
+                                    Redes, Seguridad e Inteligencia Artificial.</p>
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--div id="footer-container"></div-->
+
+    <footer class="bg-dark text-white">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Navegación</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0">Inicio</a></li>
+                        <li class="nav-item mb-2"><a href="Unidad1_1.html" class="nav-link p-0">Contenido</a></li>
+                        <li class="nav-item mb-2"><a href="https://escomisr.github.io/Algoritmos/glosario.html" class="nav-link p-0">Glosario</a></li>
+                        <li class="nav-item mb-2"><a href="https://escomisr.github.io/Algoritmos/referencias.html" class="nav-link p-0">Lista de
+                                referencias</a></li>
+                        <li class="nav-item mb-2"><a href="https://escomisr.github.io/Algoritmos/manual_usuario.html" class="nav-link p-0">Manual de
+                                usuario</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Contenido</h5>
+                    <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="Unidad1_1.html" class="nav-link p-0">Unidad 1.1</a></li>
+                    <li class="nav-item mb-2"><a href="Unidad1_2.html" class="nav-link p-0">Unidad 1.2</a></li>
+                    <li class="nav-item mb-2"><a href="Unidad1_3.html" class="nav-link p-0">Unidad 1.3</a></li>
+                    <li class="nav-item mb-2"><a href="Unidad1_4.html" class="nav-link p-0">Unidad 1.4</a></li>
+                </ul>
+                </div>
+
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Unidad 1</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"> Elaborado por:</li>
+                        <li class="nav-item mb-2"> <a id="enlaceFooter1" href="index.html#Contactos">Dr en E. Israel
+                                Salas Ramirez.</a></li>
+                        <li class="nav-item mb-2"><a id="enlaceFooter2" href="index.html#Contactos"> Dr en E. Yaxkin Flores Mendoza.</a></li>
+                        <li class="nav-item mb-2"> <a id="enlaceFooter3" href="index.html#Contactos">M. en C. Daniel Cruz García. </a></li>
+                    </ul>
+                    <!--div class="mt-3 social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div-->
+                </div>
+            </div>
+
+
+            <div class="d-flex flex-column">
+                <div>
+                    <a href="https://escomisr.github.io/Algoritmos/index.html">Recurso didactico digital Objeto de aprendizaje
+                        Unidad Unidad 1: Algoritmos fundamentales</a> por <a
+                        href="https://escomisr.github.io/Algoritmos/index.html#Contactos">Israel Salas Ramírez, Yaxkin Flores Mendoza y Daniel Cruz García</a>
+                    <br>
+                    Licencia bajo
+                    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a><img
+                        src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""
+                        style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
+                        src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""
+                        style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
+                        src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt=""
+                        style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
+                        src="https://mirrors.creativecommons.org/presskit/icons/nd.svg" alt=""
+                        style="max-width: 1em;max-height:1em;margin-left: .2em;">
+
+                </div>
+
+                <div>
+                    Fecha de elaboración: Septiembre 2025
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRkzY2t+Oe9e+qD3z5e5p6b5g5y5p5y5p5y5p5y5p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            if (window.location.hash === "#Contactos") {
+                $("#div_6").slideDown(); // Abre el div si existe
+                $('html, body').animate({ scrollTop: $("#div_6").offset().top }, 800);
+            }
+            if (window.location.hash === "#Requerimientos") {
+                $("#div_5").slideDown(); // Abre el div si existe
+                $('html, body').animate({ scrollTop: $("#div_5").offset().top }, 800);
+            }
+            if (window.location.hash === "#Metodologia") {
+                $("#div_4").slideDown(); // Abre el div si existe
+                $('html, body').animate({ scrollTop: $("#div_4").offset().top }, 800);
+            }
+            if (window.location.hash === "#Proposito") {
+                $("#div_3").slideDown(); // Abre el div si existe
+                $('html, body').animate({ scrollTop: $("#div_3").offset().top }, 800);
+            }
+            if (window.location.hash === "#Unidad_competencia") {
+                $("#div_2").slideDown(); // Abre el div si existe
+                $('html, body').animate({ scrollTop: $("#div_2").offset().top }, 800);
+            }
+            if (window.location.hash === "#Intencion") {
+                $("#div_1").slideDown(); // Abre el div si existe
+                $('html, body').animate({ scrollTop: $("#div_1").offset().top }, 800);
+            }
+
+            if (window.location.href.includes("index.html")) {
+                //$("#dropdownMenu").css({
+                //    'display': 'none',
+                //});
+                //$("#navbarDropdown").removeClass('dropdown-toggle');
+
+                $("#footer-container").css({
+                    'display': 'none',
+                });
+
+            }
+
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+
+
+
+            $('#ContactosButton').click(function () {
+                $('#div_6').slideToggle();
+            });
+
+            $('#RequerimientosButton').click(function () {
+                $('#div_5').slideToggle();
+            });
+
+            $('#MetodologiaButton').click(function () {
+                $('#div_4').slideToggle();
+            });
+
+            $('#PropositoButton').click(function () {
+                $('#div_3').slideToggle();
+            });
+
+            $('#UnidadButton').click(function () {
+                $('#div_2').slideToggle();
+            });
+            $('#IntencionButton').click(function () {
+                $('#div_1').slideToggle();
+            });
+
+            $('#enlace,#enlaceFooter1,#enlaceFooter2,#enlaceFooter3').click(function () {
+                $("#div_6").slideDown();
+                $('html, body').animate({
+                    scrollTop: $('#Contactos').offset().top
+                }, 800);
+            });
+
+            $('#enlaceHeader1').click(function () {
+                $("#div_1").slideDown();
+                $('html, body').animate({
+                    scrollTop: $('#Intencion').offset().top
+                }, 800);
+            });
+
+            $('#enlaceHeader2').click(function () {
+                $("#div_2").slideDown();
+                $('html, body').animate({
+                    scrollTop: $('#Unidad_competencia').offset().top
+                }, 800);
+            });
+
+            $('#enlaceHeader3').click(function () {
+                $("#div_3").slideDown();
+                $('html, body').animate({
+                    scrollTop: $('#Proposito').offset().top
+                }, 800);
+            });
+
+            $('#enlaceHeader4').click(function () {
+                $("#div_4").slideDown();
+                $('html, body').animate({
+                    scrollTop: $('#Metodologia').offset().top
+                }, 800);
+            });
+
+            $('#enlaceHeader5').click(function () {
+                $("#div_5").slideDown();
+                $('html, body').animate({
+                    scrollTop: $('#Requerimientos').offset().top
+                }, 800);
+            });
+
+            $('#enlaceHeader6').click(function () {
+                $("#div_6").slideDown();
+                $('html, body').animate({
+                    scrollTop: $('#Contactos').offset().top
+                }, 800);
+            });
+
+
+
+            /*$('#enlace, #enlaceFooter1, #enlaceFooter2, #enlaceFooter3').click(function () {
+                e.preventDefault();
+                var target = $(this).attr('href');
+
+                // Si el enlace apunta a #Contactos
+                if (target.includes('#Contactos')) {
+                    $("#div_6").slideDown(400, function () {
+                        $('html, body').animate({
+                            scrollTop: $('#Contactos').offset().top - 20
+                        }, 800);
+                    });
+                }
+            });*/
+
+
+        });
+    </script>
+
+</body>
+
+</html>
