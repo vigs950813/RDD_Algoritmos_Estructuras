@@ -356,77 +356,57 @@
 
     <div class="container">
         <div class="presentacion">
-            <h2>1.3 El problema de la busqueda</h2>
+            <h2>1.3 El problema de la búsqueda</h2>
         </div>
 
         <div class="section">
-            <p>La búsqueda en algoritmia se entiende como el proceso de localizar un elemento específico dentro de una
-               estructura de datos, como listas, arreglos, árboles o grafos. Este problema es considerado uno de los más
-               importantes en informática, dado que gran parte de los programas y sistemas requieren encontrar información
-               de manera rápida y eficiente (Cormen, Leiserson, Rivest, y Stein, 2022).</p>
+            <p>Todo aquello  que se requiera para llevar a cabo la búsqueda de información puede generar un problema derivado
+               a que siempre se encontrara detalles que nos genere alguna dificultad para que sea rápida, eficiente y significativa,
+               es por ello que es de suma importancia ordenar los datos utilizando algoritmos de ordenamiento y después sumar el de
+               búsqueda o el binario que provocar entonces que el espacio que utilice sea reducido y esto ayudara para que dicha 
+               información  en donde sea más fácil de ubicar, es importante determinar que esto se aplica para todo tipo de grupo 
+               de datos en volúmenes pequeños o muy grandes, aunado a ello pueden estos estar dentro de base de datos en donde se 
+               puede utilizar de la misma manera motores de búsqueda, lo importante es que no sea algo que determine el no encontrar 
+               la información requerida.</p>
 
-            <p>La búsqueda secuencial o lineal consiste en recorrer cada elemento de la estructura hasta encontrar el valor
-               buscado o concluir que no existe. Su principal ventaja es la simplicidad y que no exige que los datos estén
-               ordenados, aunque su desventaja es que presenta un costo de tiempo proporcional al tamaño de la entrada,
-               con una complejidad de de O(n) (Cormen et al., 2022).</p>
+            <p>Dentro del proceso de búsqueda existen dos métodos que pueden ayudar a resolver el problema que nos atañe estos
+               son la búsqueda lineal y la binaria. cada uno de ellos presenta características importantes.</p>
 
-            <p>La búsqueda binaria, en contraste, requiere que los datos estén previamente ordenados. Este algoritmo divide 
-               repetidamente la lista en mitades, descartando la parte en la que el elemento no puede encontrarse. Su 
-               eficiencia mejora notablemente, alcanzando una complejidad de O(logn), aunque su limitante es la necesidad
-               del ordenamiento inicial (Knuth, 1998).</p>
-
-            <p>Existen además métodos de búsqueda más avanzados, como en árboles de búsqueda, que permiten
-               operaciones rápidas de búsqueda, inserción y eliminación, o en tablas hash, que logran tiempos promedio cercanos a 
-               O(1) si el manejo de colisiones es eficiente (Sedgewick y Wayne, 2011).</p> 
-          
-            <p>El diseño de algoritmos de búsqueda eficientes es fundamental porque impacta directamente en el rendimiento de
-               sistemas operativos, bases de datos, motores de búsqueda y aplicaciones de inteligencia artificial. De este modo,
-               el estudio de las técnicas de búsqueda constituye un eje central dentro de la algoritmia (Cormen et al., 2022).</p>           
+            <p>El de búsqueda lineal nos ayuda a llevar a cabo un proceso de verificación en una trayectoria de los datos revisando
+               uno por uno con el fin de identificar aquel nos esté generando algún tipo de problema, por lo que en el binario lo primero 
+               que necesita es que los datos se encuentren ordenados para que con ellos puede clasificar a estos y con la ejecución de 
+               varias veces puede visualizar cuál de los datos está generando dicho problema y atenderlo para seguir con el proceso.</p>
+             
         </div>
 
         <div class="section" id="metodos-asignacion">
             <h4>1.3.1 Búsqueda secuencial</h4>
 
-            <p>La búsqueda secuencial, también conocida como búsqueda lineal, es uno de los algoritmos más simples y fundamentales
-               para localizar un elemento dentro de una estructura de datos. Consiste en recorrer de manera ordenada todos los elementos
-               de la lista o arreglo, comparando cada uno con el valor buscado, hasta encontrarlo o concluir que no se encuentra en la
-               colección (Cormen, Leiserson, Rivest, y Stein, 2022).</p>
+            <p>Cuando un elemento o dato se establece dentro de una lista secuencial y esta se almacena presenta relación lineal o secuencial por 
+               lo que su posición es relevante en comparación con los demás, por lo que es importante considerar que estos datos representan 
+               valores dentro del proceso que se está llevando a cabo, pero recordemos que deben de estar ordenados es una situación que no se 
+               puede olvidar.</p>
 
-           <p>Su principal ventaja radica en que puede aplicarse sobre cualquier tipo de estructura de datos, ya sea ordenada o no, lo que
-              la hace universal y sencilla de implementar. Sin embargo, presenta la desventaja de ser poco eficiente en conjuntos grandes de datos,
-              ya que en el peor de los casos requiere revisar todos los elementos, alcanzando una complejidad temporal de O(n) (Knuth, 1998).</p>
-               
-            <p>La búsqueda secuencial resulta adecuada cuando se trabaja con listas pequeñas o cuando no se justifica el costo adicional de
-               ordenar los datos o implementar algoritmos más complejos. Además, sigue siendo útil como referencia en la enseñanza de algoritmos
-               por su claridad y facilidad de comprensión (Sedgewick y Wayne, 2011).</p>   
+           <p>Es por ello, qué los algoritmos de búsqueda requieren en algún momento determinar una decisión sobre estos datos ya que si no 
+              lo consideramos puede presentarse un error o un problema que no será rápido de identificar y se tendrá que volver a realizar 
+              el análisis de la información.</p>
+                  
         </div>
 
         <div class="section" id="asignacion-contigua">
             <h4>1.3.2 Búsqueda binaria</h4>
       
-            <p>La búsqueda binaria es un algoritmo eficiente que permite localizar un elemento en una estructura de datos ordenada. Su funcionamiento
-               se basa en dividir repetidamente el conjunto a la mitad: se compara el valor buscado con el elemento central y, dependiendo del resultado,
-               se descarta la mitad en la que no puede encontrarse. Este proceso se repite hasta localizar el valor o concluir que no está presente en 
-               la colección.</p>
+            <p>Dentro de este caso tenemos que considerar diferentes situaciones que son importantes para su desarrollo, lo primero que cada elemento
+               debe de estar dentro de una lista ordenada para que con ello se pueda dividir el proceso y se pueda estar realizando varias veces hasta
+               que dicha lista se encuentre ordenada para llevar a cabo la búsqueda binaria. la segunda es que se requiere tener un arreglo esto es 
+               para que sea más rápido el ordenamiento de los datos y con ello sea más fácil encontrar la información requerida desde un ordenamiento,
+               esto te ayudara a tener mejor precisión en los cálculos o implementación del algoritmo en la solución de un problema.</p>
 
-           <p>Una de sus ventajas más importantes es la reducción del número de comparaciones respecto a la búsqueda secuencial. En lugar de recorrer
-              todos los elementos, el algoritmo disminuye exponencialmente el espacio de búsqueda, logrando una complejidad temporal de O(logn). No
-              obstante, su principal desventaja es que exige que los datos estén previamente ordenados, lo cual puede incrementar el costo total en
-              ciertos contextos.</p>
-               
-            <p>La búsqueda binaria es especialmente útil en aplicaciones que requieren consultas rápidas sobre grandes volúmenes de datos estáticos
-               o poco cambiantes. Es ampliamente utilizada en el diseño de sistemas, en la optimización de búsquedas dentro de bases de datos y en la
-               implementación de algoritmos avanzados, como los relacionados con árboles de búsqueda y estructuras indexadas.</p>  
-        
-
-            <p>La figura 9 muestra una clasificación de los algoritmos de búsqueda, destacando la búsqueda secuencial como la forma más básica de localizar
-               un elemento en una estructura de datos. Su principal ventaja es que puede aplicarse sobre cualquier colección, ya que no requiere que los datos
-               estén ordenados; sin embargo, presenta una gran desventaja en términos de eficiencia, pues al tener una complejidad lineal, resulta poco adecuada
-               para conjuntos de gran tamaño (Cormen, Leiserson, Rivest, y Stein, 2022).</p>
+ 
             <br>
             <figure>
 
-                <span>Figura 9. El problema de la búsqueda (Cormen, Leiserson, Rivest, y Stein, 2022).</span>
+                <span>Figura 9. Clasificación de los algoritmos de búsqueda.</span>
             </figure>
             <div class="centrar-imagen">
                 <img src="images/figura9.png" alt="Figura_9" style="max-width: 500px; max-height: 500px;">
@@ -437,7 +417,7 @@
             <div class="highlight">
                 <p>En caso de requerir más información sobre el tema, se proporciona el siguiente material audiovisual.
                 </p>
-                <p>Reynoso L. (2020)<em>Búsqueda y Secuencia Binaria</em> <i></i>[Video] Universidad Nacional del Comahue. <a href="https://www.youtube.com/watch?v=B6o8dgLZbV0"
+                <p>Reynoso L. (2020)<em> Búsqueda y Secuencia Binaria</em> <i></i>[Video] Universidad Nacional del Comahue. <a href="https://www.youtube.com/watch?v=B6o8dgLZbV0"
                         target="_blank">https://www.youtube.com/watch?v=B6o8dgLZbV0</a>
                 </p>
             </div>
@@ -445,31 +425,24 @@
             <h4>1.3.3 Búsqueda indexada</h4>
 
             <div class="quote">
-                <p>La búsqueda indexada es un método que utiliza una estructura auxiliar de índices para localizar
-                elementos dentro de grandes volúmenes de datos. A diferencia de la búsqueda secuencial o binaria,
-                este enfoque crea un índice que actúa como una guía, permitiendo acceder más rápidamente a los
-                registros deseados sin necesidad de recorrer toda la colección.</p>
+                <p>Esta forma de descubrir la forma de ordenar por medio de un índice permite a todo proceso establecer mecanismos que
+                   ayuden a la búsqueda de datos en donde organice, recopile, clasifique y almacena información de forma que sea
+                   con mayor efectividad y alta velocidad.</p>
 
-               <p>El uso de índices presenta la ventaja de reducir de manera significativa el tiempo de búsqueda, ya que
-                 posibilita saltar directamente a la posición aproximada donde se encuentra el dato. Esto es particularmente
-                 eficiente en bases de datos, donde los índices funcionan de manera análoga a los de un libro: permiten localizar
-                 información de forma inmediata a partir de una clave. Sin embargo, una de sus desventajas es que requiere
-                 espacio adicional para almacenar los índices y tiempo de mantenimiento cuando se insertan, eliminan o modifican 
-                 registros.</p>
+               <p>Es por ello que se presentaran diferentes características que nos ayudan como son: mayor rapidez y eficacia, todas
+                  las búsquedas las genera con un valor importante de importancia que ayudara a entender los procesos o búsqueda de
+                  información que se está llevando a cabo esto permite ser más precisos y objetivos, aunado a ello permitirá mayor 
+                  visibilidad para cualquier usuario y con esto se lograra la optimización en los motores correspondientes.</p>
 
-                <p>La búsqueda indexada es ampliamente utilizada en sistemas de gestión de bases de datos (SGBD) y en estructuras 
-                   complejas como árboles B y B+, ya que optimiza la recuperación de información en entornos con gran cantidad de 
-                   datos. Su relevancia radica en que equilibra la eficiencia de acceso con la gestión de almacenamiento, siendo
-                   un componente esencial en el diseño de sistemas de información modernos (Date, 2004).</p>     
+                <p>Ahora bien, una de las grandes ventajas que se obtiene al indexar las búsquedas es que nos ofrecerá mayor importancia
+                   de todo lo que encuentre y esto es de suma importancia para los datos sensibles o en su caso información que se requiere 
+                   visualizar esto es una forma más ordenada de los algoritmos de trabajar en volúmenes de diferentes tamaños recordando 
+                   que se debe de generar listas ordenadamente.</p>     
 
-                <p>La figura 10, representa el proceso de la búsqueda indexada, mostrando cómo un índice actúa como guía para acceder
-                   a los registros de un conjunto de datos. En lugar de recorrer toda la colección, el índice permite localizar directamente
-                   la posición del elemento buscado, optimizando así el tiempo de recuperación de información (Silberschatz, Korth, y Sudarshan, 2020).</p>
-
-                            <br>
+            <br>
             <figure>
 
-                <span>Figura 10. Búsqueda indexada (Silberschatz, Korth, y Sudarshan, 2020; Elmasri y Navathe, 2016; Date, 2004).</span>
+                <span>Figura 10. Búsqueda indexada.</span>
             </figure>
             <div class="centrar-imagen">
                 <img src="images/figura10.png" alt="Figura_10" style="max-width: 500px; max-height: 500px;">
@@ -481,55 +454,26 @@
         <div class="section" id="administracion-espacio">
             <h4>1.3.4 Comparación de órdenes de complejidad</h4>
 
-            <p>El análisis de la complejidad algorítmica permite comparar distintos algoritmos de búsqueda con base en su
-               eficiencia temporal y espacial. Este análisis se expresa comúnmente mediante la notación Big-O, la cual describe
-               el comportamiento del tiempo de ejecución en el peor de los casos a medida que aumenta el tamaño de la 
-               entrada (Cormen, Leiserson, Rivest, y Stein, 2022).</p>
+            <p>Al realizar una relación que está determinada como una serie de instrucciones complejas este proceso llevara a cabo una revisión
+               específica para darnos con eficiencia entro de los algoritmos y esto nos ayudar a seleccionar más adecuadamente la solución 
+               a un problema específico y esto determinara la forma idónea para poder implementar la solución propuesta.</p>
 
-            <p>En la búsqueda secuencial, la complejidad es O(n), ya que en el peor escenario es necesario recorrer todos los
-               elementos de la colección. Esto significa que el tiempo de ejecución crece de manera proporcional al número de
-               datos, siendo poco eficiente en grandes volúmenes de información (Knuth, 1998).</p>
 
-            <p>En contraste, la búsqueda binaria alcanza una complejidad de O(logn), pues reduce a la mitad el espacio de búsqueda
-               en cada iteración, resultando mucho más eficiente que la búsqueda secuencial, aunque requiere que los datos estén
-               ordenados previamente. Por su parte, la búsqueda indexada puede considerarse cercana a O(1) en promedio, ya que el
-               acceso mediante índices permite llegar directamente al registro deseado; no obstante, este método implica costos
-               adicionales en espacio y mantenimiento del índice (Sedgewick y Wayne, 2011)..</p>
-
-            <p>La comparación muestra que no existe un único algoritmo “mejor” para todos los contextos. La elección depende de las
-               características de los datos y de los recursos disponibles: la búsqueda secuencial es útil en colecciones pequeñas y
-               no ordenadas, la binaria resulta óptima en conjuntos ordenados y estáticos, mientras que la indexada es indispensable
-               en sistemas de bases de datos donde la eficiencia en grandes volúmenes es crítica.</p>
 
            <figure>
 
-                <span>Figura 11. Comparación de órdenes de complejidad en algoritmos de búsqueda. (Cormen, T. H., Leiserson, C. E., Rivest, R. L.,
-                      y Stein, C. (2022); Knuth, D. E. (1998); Sedgewick, R., y Wayne, K. (2011); Silberschatz, A., Korth, H. F.,
-                      y Sudarshan, S. (2020)).</span>
+                <span>Figura 11. Comparación de complejidad en algoritmos de búsqueda.</span>
             </figure>
             <div class="centrar-imagen">
                 <img src="images/figura11.png" alt="Figura_11" style="max-width: 500px; max-height: 500px;">
             </div>
 
-         <div class="highlight">
-            <h4>Resumen de la sección el problema de la búsqueda</h4>
-            <ul>
-                <li>La comparación de los algoritmos de búsqueda evidencia que la búsqueda secuencial es simple y flexible pero ineficiente en colecciones
-                    extensas por su crecimiento lineal; la búsqueda binaria mejora notablemente la eficiencia al reducir el espacio de búsqueda en cada paso,
-                    alcanzando un orden logarítmico pero exige datos previamente ordenados; y la búsqueda indexada resulta clave en sistemas modernos y bases
-                    de datos al posibilitar accesos cercanos a tiempo constante, a costa de espacio y mantenimiento de los índices.</li>
-
-                <li>No existe un algoritmo universalmente superior: la secuencial conviene en conjuntos pequeños y desordenados, la binaria en colecciones
-                    estáticas y ordenadas, y la indexada cuando se gestionan grandes volúmenes y la latencia de consulta es crítica. Por ello, la elección
-                    informada debe apoyarse en el análisis de complejidad, el patrón de operaciones (búsquedas vs. actualizaciones), y las restricciones de
-                    memoria/tiempo del sistema, integrando criterios tanto teóricos como de ingeniería de datos.</li>    
-                    
-            </ul>
-        </div>
+     
   
   
 
-        <p><strong>¿Que importancia tiene la exploración exhaustiva y vuelta atrás?</strong></p>
+        <p><strong>¿Qué ventajas ofrecen los métodos de exploración exhaustiva y vuelta atrás para que al desarrollar un
+                   algoritmo sea más rápido y se adapte a cualquier situación?.</strong></p>
 
 
         <div class="paginacion">

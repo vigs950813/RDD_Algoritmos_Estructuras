@@ -337,163 +337,99 @@
 
         <div class="section">
             <h4></h4>
-            <p>La exploración exhaustiva (fuerza bruta) recorre sistemáticamente todo el espacio de soluciones; es completa y
-               trivialmente correcta, pero su costo suele ser exponencial en el tamaño de la entrada. La vuelta atrás, es una
-                búsqueda en profundidad con poda: construye soluciones parciales y descarta de inmediato las que violan
-               restricciones, manteniendo completitud pero reduciendo en la práctica el espacio explorado. En ambos casos el 
-               peor caso es exponencial; la diferencia real está en cuánto del árbol se poda gracias a la estructura del problema y
-               a las heurísticas. (Cormen, Leiserson, Rivest, y Stein, 2022; Russell y Norvig, 2021; Dechter, 2003).</p>
+            <p>Es el uso de un método de fuerza bruta en donde se realizan pruebas con la posibilidad de encontrar una o varias
+               soluciones a un problema, por lo que es importante considerar que la vuelta atrás ayuda a establecer la técnica de 
+               exploración exhaustiva en soluciones incrementales y volver atrás establece una ruta que puede ser parcial y total 
+               en los problemas de optimización de espacio.</p>
 
              <h4></h4>
-               <p>Exploración exhaustiva: Enumerar sistemáticamente cada candidato y verificar si satisface el criterio; garantiza 
-                encontrar solución (si existe), pero su coste crece exponencialmente. Útil cuando el espacio es pequeño o se
-                requiere una verificación completa. (Cormen et al., 2022).</p>
+               <p>Por lo que pueden existir diferentes exploraciones exhaustivas como son:</p>
 
-               <p>Vuelta atrás: Búsqueda en profundidad que construye soluciones paso a paso y deshace (“retrocede”) decisiones
-                 cuando detecta que ninguna extensión podrá ser válida; misma completitud que el brute force, pero típicamente 
-                 menos trabajo gracias a la poda. (Kleinberg y Tardos, 2005; Skiena, 2020).</p>
+               <p>a) Exploración exhaustiva.</p>
+               <p>b) Vuelta atrás.</p> 
+               <p>c) Modelo de árbol de búsqueda.</p>    
 
-                <p>Modelo de árbol de búsqueda: Cada nodo representa una decisión parcial; las aristas añaden una elección;
-                 las hojas son soluciones completas o callejones sin salida. Las pseudorrestricciones permiten decidir temprano si 
-                 conviene seguir descendiendo o volver atrás. (Russell y Norvig, 2020)..</p>
+ 
 
            <figure>
 
-                <span>Figura 12. Compara los enfoques de exploración exhaustiva y vuelta atrás en un árbol de decisiones del lado 
-                 izquierdo, la exploración exhaustiva recorre todas las ramas posibles, sin discriminar entre caminos viables
-                 o inviables, del lado derecho, la vuelta atrás muestra el avanza en profundidad y, al detectar un camino
-                 que no conduce a una solución válida, coloca la rama (marcada con una “X”), evitando exploraciones (Cormen, Leiserson, Rivest, y Stein, 2022).</span>
+                <span>Figura 12. Compara los enfoques de exploración exhaustiva.</span>
             </figure>
            
                 <img src="images/figura12.png" alt="Figura_12" class="imagen-centrada" style="max-width: 500px; max-height: 500px;">
             
              <h4>1.4.1 Exploración exhaustiva </h4>
-               <p>La exploración exhaustiva presenta como ventajas su simplicidad conceptual y facilidad de implementación,
-                 ya que se basa en generar todas las posibles soluciones y verificar cuáles cumplen las condiciones establecidas.
-                 Este enfoque garantiza la completitud, pues asegura encontrar la respuesta, si existe, además de permitir en ciertos
-                 casos obtener la solución óptima al evaluar todas las alternativas. No obstante, sus desventajas radican en el alto
-                 coste computacional, dado que el número de combinaciones crece de manera exponencial con el tamaño del problema,
-                 generando una explosión combinatoria que hace inviable su aplicación en instancias grandes. Asimismo, su 
-                 ineficiencia  práctica limita su uso a espacios de búsqueda pequeños o a problemas donde la certeza absoluta 
-                 es indispensable (Cormen, Leiserson, Rivest, y Stein, 2022).</p>
+               <p>La exploración exhaustiva presenta como ventajas su simplicidad conceptual y facilidad de implementación, ya que
+                  se basa en generar todas las posibles soluciones y verificar cuáles cumplen las condiciones establecidas.</p>
 
 
              <h4>Ventajas de la vuelta atrás</h4>
             <ul class="feature-list">
-                <li>Una de las mayores fortalezas de la vuelta atrás es su capacidad de reducir el espacio de búsqueda mediante la
-                    poda temprana de ramas no viables. Esto le permite ser más eficiente que la exploración exhaustiva, ya que 
-                    evita recorrer caminos que inevitablemente no conducirán a una solución válida. Al mismo tiempo, mantiene la 
-                    completitud del proceso, garantizando encontrar la solución si existe dentro del espacio de búsqueda, lo que
-                    lo hace confiable en problemas donde la exactitud es indispensable. (Kleinberg y Tardos, 2005).</li><p></p>
-                <li>Eficiencia práctica es importante y radica en que el algoritmo trabaja en profundidad, lo que implica un bajo 
-                    consumo de memoria, proporcional únicamente a la profundidad del árbol de decisiones. Esto lo convierte en un
-                    método adecuado para problemas combinatorios con restricciones bien definidas, como el Sudoku, el problema de 
-                    las N-reinas o la asignación de recursos. Además, su estructura recursiva facilita la implementación y la
-                    incorporación de heurísticos que mejoran aún más su desempeño práctico. (Russell y Norvig, 2020).</li>
+                <li>Esto le permite ser más eficiente que la exploración exhaustiva, ya que evita recorrer caminos que inevitablemente
+                    no conducirán a una solución válida.</li><p></p>
+                <li>Eficiencia práctica es importante y radica en que el algoritmo trabaja en profundidad, lo que implica un bajo
+                    consumo de memoria, proporcional únicamente a la profundidad del árbol de decisiones.</li>
             
             </ul>
             <h4>Desventajas de la vuelta atrás</h4>
             <ul class="feature-list">
-                <li>Complejidad en el peor caso, es una limitación central de la vuelta atrás es que, aunque mejora la eficiencia
-                    frente a la exploración exhaustiva, en el peor escenario su coste sigue siendo exponencial. Esto significa que,
-                    cuando las restricciones no permiten una poda efectiva, el algoritmo puede terminar explorando casi tantas
-                    configuraciones como el brute force. En consecuencia, no resuelve completamente el problema de la explosión
-                    combinatoria, lo cual limita su escalabilidad en instancias muy grandes. (Kleinberg y Tardos, 2005).</li><p></p>
-                <li>Dependencia de heurísticos es importante que su rendimiento depende en gran medida de la calidad de los criterios
-                    de poda y de los heurísticos de búsqueda empleados, como el orden en que se seleccionan variables y valores. 
-                    Diseñar estas estrategias requiere un análisis más profundo del problema y, en muchos casos, conocimientos 
-                    adicionales para optimizar la búsqueda. Si los heurísticos son inadecuados, el algoritmo pierde efectividad, 
-                    volviéndose costoso en tiempo y memoria y reduciendo su aplicabilidad en escenarios complejos. (Russell y Norvig, 2020).</li>
+                <li>Complejidad en el peor caso, es una limitación central de la vuelta atrás es que, aunque mejora la eficiencia frente 
+                    a la exploración exhaustiva, en el peor escenario su coste sigue siendo exponencial. Esto significa que, cuando las 
+                    restricciones no permiten una poda efectiva, el algoritmo puede terminar explorando casi tantas configuraciones como 
+                    fuerza bruta, en consecuencia, no resuelve completamente el problema de la explosión combinatoria, lo cual limita su
+                    escalabilidad en instancias muy grandes.</li><p></p>
+                <li>Dependencia de heurísticos es importante que su rendimiento depende en gran medida de la calidad de los criterios de 
+                    poda y de los heurísticos de búsqueda empleados, como el orden en que se seleccionan variables y valores. Diseñar estas
+                    estrategias requiere un análisis más profundo del problema y, en muchos casos, conocimientos adicionales para optimizar 
+                    la búsqueda.</li>
             
             </ul>
    
         </div>
  
             <h4>1.4.2 Programación por vuelta atrás</h4>
-            <p>La programación por vuelta atrás es una técnica algorítmica que se basa en la exploración en profundidad de un espacio de soluciones,
-               construyendo las respuestas de manera incremental y retrocediendo cada vez que se detecta una violación de restricciones. En este 
-               enfoque, cada decisión se representa como un paso en el árbol de búsqueda; si en algún punto se determina que una elección parcial no
-               puede conducir a una solución válida, el algoritmo retrocede al paso anterior para probar una alternativa distinta. Este
-               mecanismo permite reducir significativamente el espacio de búsqueda en comparación con la exploración exhaustiva, aunque en el peor
-               de los casos conserva complejidad exponencial (Kleinberg y Tardos, 2005).
+            <p>Es una técnica de algoritmos que permite resolver problemas de manera incremental teniendo en consideración restricciones mediante 
+               la búsqueda de información en un espacio de soluciones.
             </p>
-            <p>Desde una perspectiva metodológica, la programación por vuelta atrás se apoya en tres elementos clave: la definición de estados
-               parciales, la evaluación de factibilidad y la poda de ramas. Los estados parciales corresponden a soluciones incompletas que se van 
-               construyendo progresivamente; la factibilidad implica verificar en cada paso si la solución parcial puede seguir extendiéndose sin 
-               romper las restricciones; y la poda elimina aquellos caminos que no cumplen las condiciones, optimizando así el proceso de búsqueda.
-               Este enfoque resulta especialmente útil en problemas de tipo combinatorio y de satisfacción de restricciones, como el problema
-               de las N-reinas, el Sudoku, la coloración de grafos y la asignación de recursos (Russell y Norvig, 2020).</p>
+            <p>Porque es importante, permite encontrar una o muchas soluciones a posibles problemas complejos, en donde puede ser eficaz para los
+               problemas en donde obligatoriamente se deben de cumplir condiciones en la aritmética, aunado a ello se puede aplicar en problemas
+               combinatorios.</p>
 
-             <p>La relevancia de la programación por vuelta atrás radica en que combina completitud con eficiencia práctica, al explorar únicamente
-                las ramas potencialmente válidas. Aunque no evita la complejidad intrínseca de los problemas NP-completos, proporciona una estrategia
-                viable para abordar instancias de tamaño moderado y se convierte en la base de algoritmos más sofisticados como branch and bound o 
-                constraint programming. Su versatilidad la posiciona como una herramienta fundamental en inteligencia artificial, optimización y 
-                resolución de problemas combinatorios en general (Skiena, 2020). </p> 
+  
 
                <figure>
 
-                <span>Figura 13. El diagrama ilustra cómo el algoritmo de vuelta atrás construye soluciones parciales en un tablero 4×4 y
-                      retrocede cuando detecta un conflicto, podando las ramas inválidas hasta encontrar una configuración válida. Adaptado de
-                      Introduction to Algorithms (Cormen, Leiserson, Rivest, y Stein, 2022).</span>
+                <span>Figura 13. El diagrama del algoritmo de vuelta atrás.</span>
             </figure>
          
                 <img src="images/figura13.png" alt="Figura_13" class="imagen-centrada" style="max-width: 500px; max-height: 500px;">
             
         <div class="section" id="sistemas-estructurados">
            
-        <div class="highlight">
-            <h4>Resumen. Exploración exhaustiva y programación por vuelta atrás</h4>
-            <ul>
-                <li>La exploración exhaustiva es un método de búsqueda que revisa todas las posibles soluciones de un problema, garantizando completitud y
-                    en algunos casos, la obtención de la solución óptima. Su principal fortaleza radica en su simplicidad conceptual y facilidad de 
-                    implementación; sin embargo, su mayor desventaja es la explosión combinatoria, ya que el tiempo de ejecución crece de manera exponencial
-                    con el tamaño del espacio de búsqueda. Este enfoque se utiliza principalmente en problemas de baja complejidad o en contextos donde es
-                    indispensable una verificación absoluta de todas las alternativas posibles.</li>
 
-                <li>Por su parte, la programación por vuelta atrás surge como una mejora al enfoque exhaustivo, aplicando un esquema de búsqueda en 
-                    profundidad con poda de ramas inválidas. Esto permite descartar tempranamente configuraciones que no conducen a una solución, lo que optimiza
-                    el proceso y reduce el número de exploraciones necesarias. Aunque en el peor de los casos mantiene complejidad exponencial, su eficiencia
-                    práctica y bajo consumo de memoria la convierten en una estrategia útil para problemas combinatorios con restricciones, como el Sudoku, 
-                    el problema de las N-reinas o la coloración de grafos. Además, constituye la base de métodos más avanzados como branch and bound y la programación 
-                    con restricciones.</li>    
-                    
-            </ul>      
-        </div>      
             <div class="subsection">
                 <h4>1.4.3 Nociones de complejidad de la exploración exhaustiva y vuelva atrás.</h4>
 
-                <p>La exploración exhaustiva es un enfoque algorítmico que consiste en probar todas las posibles soluciones de un problema hasta encontrar la correcta.
-                   Su complejidad computacional suele crecer de forma exponencial, ya que se analizan todas las combinaciones posibles. Por ejemplo, en un problema de
-                   búsqueda con 𝑛 elementos, la cantidad de operaciones puede llegar a ser del orden de O(2n). Esto convierte al método en poco eficiente para problemas
-                   de gran escala, aunque garantiza siempre encontrar una solución. </p>
+                <p>Para entender claramente el cómo se establece los términos de este proceso debemos de discernir la importancia de que son, para que sirven y como la
+                   eficacia es indispensable para poder resolver el tamaño de la cantidad de datos a analizar. </p>
 
-                <p>En contraste, la vuelta atrás optimiza la exploración exhaustiva al descartar tempranamente ramas del espacio de búsqueda que no cumplen
-                   con las condiciones del problema. Así, en lugar de recorrer todas las posibilidades, se reducen los cálculos explorando únicamente aquellas rutas
-                   potencialmente válidas. Aunque en el peor de los casos su complejidad sigue siendo exponencial, en la práctica disminuye significativamente el número
-                   de pasos al evitar soluciones inviables desde el inicio.</p>
+                <p>Por lo que la exploración exhaustiva determina la técnica que utiliza la búsqueda de soluciones a cualquier tipo de problema teniendo un proceso de 
+                   análisis y de examinación exhaustivamente en donde todo se debe de considerar para tanto el planteamiento del problema como sus posibles soluciones.</p>
 
-                <p>La exploración exhaustiva asegura exactitud a costa de un alto costo computacional, mientras que la vuelta atrás introduce una estrategia más eficiente,
-                   limitando el número de soluciones exploradas. Ambas técnicas son fundamentales en problemas de combinatoria, juegos de tablero, satisfacibilidad y 
-                   optimización, donde la relación entre tiempo de ejecución y calidad de la solución es crucial.</p>   
+                <p>Ahora bien la complejidad se determinara por el tipo de problema y la aplicación de un algoritmo que permita desarrollar un análisis exhaustivo del 
+                   problema estableciendo todas las posibles soluciones que este puede llegar a tener, es por ello que la búsqueda con vuelta atrás determina la técnica
+                   a utilizar considerando que debe de existir una búsqueda profunda que permita explorar el espacio y las posibles soluciones de una forma secuencial y 
+                   determinante que mejore la visión de la exploración exhaustiva, para ello se debe de considerar: construcción elemental, poda y naturaleza recursiva y
+                   con la complejidad se debe también considerar, lo exponencial, la fuerza bruta y el problema, para que con ello se plantee una solución más viable para
+                   el tipo de problema.</p>   
 
 
               <figure>
 
-                <span>Figura 14. compara la exploración exhaustiva, que evalúa todas las soluciones posibles con complejidad exponencial, frente a la vuelta atrás,
-                      que descarta ramas innecesarias reduciendo el espacio de búsqueda (Cormen, T. H., Leiserson, C. E., Rivest, R. L., y Stein, C., 2022).</span>
+                <span>Figura 14. compara en la exploración exhaustiva, complejidad exponencial y vuelta atrás.</span>
             </figure>
             
                 <img src="images/figura14.png" alt="Figura_14" class="imagen-centrada" style="max-width: 500px; max-height: 500px;">
-            
-        <div class="highlight">
-        <h4>Resumen. Nociones de complejidad de la exploración exhaustiva y vuelva atrás.</h4>
-        <ul>
-            <li>La exploración exhaustiva implica analizar todas las posibles soluciones de un problema, lo que asegura siempre encontrar la respuesta correcta,
-               aunque con un costo computacional elevado por su complejidad exponencial. En cambio, la vuelta atrás optimiza este proceso al descartar tempranamente
-               aquellas ramas que no cumplen con las condiciones del problema, reduciendo así el espacio de búsqueda. Aunque en el peor escenario ambas técnicas
-               mantienen una complejidad elevada, la vuelta atrás resulta más eficiente en la práctica, especialmente en problemas combinatorios y de optimización.</li>
-         </ul>   
-        </div>
      </div>
 
         <div class="paginacion">
